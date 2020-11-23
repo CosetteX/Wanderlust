@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:id="@+id/bar_1_map_fragment"
+        android:name="com.example.wanderlust_0.Bar_1_Map"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bg_black"
+        android:background="@color/bg_white"
+        android:text="----------------------"/>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/bar_1_ctrl_fragment"
+        android:name="com.example.wanderlust_0.Bar_1_Control"
+        />
+
+</LinearLayout>

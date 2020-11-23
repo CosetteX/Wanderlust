@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="plantes">
+        <item>NOKIA</item>
+        <item>MOTO</item>
+        <item>HTC</item>
+        <item>LG</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="cityZhejiang">
+        <item>杭州</item>
+        <item>温州</item>
+        <item>绍兴</item>
+        <item>宁波</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="cityYunnan">
+        <item>大理</item>
+        <item>丽江</item>
+        <item>西双版纳</item>
+        <item>昆明</item>
+        <item>其他</item>
+    </string-array>
+
+</resources>
