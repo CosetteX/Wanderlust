@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import java.lang.reflect.Field;
 
-public class Bar_1_Control extends Fragment {
+public class Bar_1_Selector extends Fragment {
     ArrayAdapter adapter;
     TextView textview;
     Spinner spinner;
@@ -36,11 +36,11 @@ public class Bar_1_Control extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bar_1_ctrl, container, false);
+        View view = inflater.inflate(R.layout.bar_1_sel, container, false);
         spinner = (Spinner)view.findViewById(R.id.bar_1_spinner);
         textview = (TextView)view.findViewById(R.id.bar_1_txt);
 
-        String name = "plantes";
+        String name = "cityZhejiang";
         int resId = getResId(name,R.array.class);
         adapter = ArrayAdapter.createFromResource(getActivity(),resId, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
