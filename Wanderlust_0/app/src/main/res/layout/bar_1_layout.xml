@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:id="@+id/bar_1_ctrl_fragment"
-        android:name="com.example.wanderlust_0.Bar_1_Selector"
+        android:name="com.example.wanderlust_0.Bar_1_Control"
         />
 
 </LinearLayout>

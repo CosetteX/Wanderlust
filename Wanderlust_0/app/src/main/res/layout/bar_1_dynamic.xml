@@ -4,13 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="310dp"
-        android:id="@+id/bar_1_map_fragment_dy" />
-
+        android:id="@+id/bar_1_map_fragment_dy"
+        />
 
     <TextView
         android:layout_width="match_parent"

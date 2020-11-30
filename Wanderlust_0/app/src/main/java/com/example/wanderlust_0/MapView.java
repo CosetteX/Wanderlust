@@ -43,12 +43,12 @@ public class MapView extends View {
     //当前选中的省份
     private ProvinceItem select;
 
-    Bar_1_Selector controller;
-    public void setCtrl(Bar_1_Selector c){
+    Bar_1_Control controller;
+    public void setCtrl(Bar_1_Control c){
         this.controller = c;
     }
 
-    public MapView(Context context, Bar_1_Selector c) {
+    public MapView(Context context,Bar_1_Control c) {
         super(context);
         init(context);
         this.controller = c;

@@ -6,11 +6,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-public class Bar_1_SelectorView extends View {
+public class Bar_1_ControlView extends View {
 
-    public Bar_1_SelectorView(Context context, @Nullable ViewGroup container) {
+    public Bar_1_ControlView(Context context, @Nullable ViewGroup container) {
         super(context);
-        inflate(context, R.layout.bar_1_sel, container);
+        inflate(context, R.layout.bar_1_ctrl, container);
     }
 
 

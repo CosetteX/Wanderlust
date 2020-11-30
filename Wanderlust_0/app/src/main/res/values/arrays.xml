@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="plantes">
+        <item>NOKIA</item>
+        <item>MOTO</item>
+        <item>HTC</item>
+        <item>LG</item>
+        <item>其他</item>
+    </string-array>
 
     <string-array name="cityZhejiang">
         <item>杭州</item>
