@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:gravity="center"
-    android:textColor="@color/text_yellow"
+    android:textColor="#87a7d6"
     android:textSize="20dp"
     android:text="I'm controller"/>
 
@@ -22,6 +22,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:textColor="#87a7d6"
+        android:textSize="18dp"
         android:text="确定"/>
 
 </LinearLayout>
