@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bg_gray"
+    android:layout_gravity="center">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4">
+
+        <TextView
+            android:id="@+id/c1"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="@color/theme_color"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#887646"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#8876"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#88aa46"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+    </GridLayout>
+
+
+    <SeekBar
+        android:id="@+id/seekbar_R"
+        style="@style/CustomSeekbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <SeekBar
+        android:id="@+id/seekbar_G"
+        style="@style/CustomSeekbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <SeekBar
+        android:id="@+id/seekbar_B"
+        style="@style/CustomSeekbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/result_color"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@color/theme_color"/>
+
+    <Button
+        android:layout_gravity="bottom"
+        android:id="@+id/color_chooser_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/theme_color"
+        android:text="确定"/>
+
+</LinearLayout>

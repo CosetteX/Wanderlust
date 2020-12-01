@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="privinceTable">
+        <item>Anhui</item>
+        <item>Beijing</item>
+        <item>Chongqing</item>
+        <item>Fujian</item>
+        <item>Guangdong</item>
+        <item>Gansu</item>
+        <item>Guangxi</item>
+        <item>Guizhou</item>
+        <item>Hainan</item>
+        <item>Hebei</item>
+        <item>Henan</item>
+        <item>HongKong</item>
+        <item>Heilongjiang</item>
+        <item>Hunan</item>
+        <item>Hubei</item>
+        <item>Jilin</item>
+        <item>Jiangsu</item>
+        <item>Jiangxi</item>
+        <item>Liaoning</item>
+        <item>Macau</item>
+        <item>NeiMongol</item>
+        <item>Ningxia</item>
+        <item>Quinghai</item>
+        <item>Shaanxi</item>
+        <item>Sichuan</item>
+        <item>Shandong</item>
+        <item>Shanghai</item>
+        <item>Shanxi</item>
+        <item>Tianjin</item>
+        <item>Taiwan</item>
+        <item>Xinjiang</item>
+        <item>Xizang</item>
+        <item>Yunnan</item>
+        <item>Zhejiang</item>
+    </string-array>
+
+
+    <string-array name="Zhejiang">
+        <item>杭州</item>
+        <item>温州</item>
+        <item>绍兴</item>
+        <item>宁波</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="Yunnan">
+        <item>大理</item>
+        <item>丽江</item>
+        <item>西双版纳</item>
+        <item>昆明</item>
+        <item>其他</item>
+    </string-array>
+
+</resources>
