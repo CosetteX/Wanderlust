@@ -29,4 +29,7 @@
         <item name="android:thumb">@drawable/seekbar_thumb</item>
     </style>
 
+    <style name="FullDialog" >
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

@@ -5,10 +5,19 @@
     android:background="@color/bg_white"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/bar_1_flag_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@drawable/button_flag_sel"
+        android:text="" />
+
     <TextView
         android:id="@+id/bar_1_txt"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:gravity="center"
         android:textColor="#87a7d6"
         android:textSize="20dp"

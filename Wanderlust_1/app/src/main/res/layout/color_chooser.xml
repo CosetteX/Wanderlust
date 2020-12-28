@@ -7,8 +7,10 @@
     android:layout_gravity="center">
 
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:alignmentMode="alignBounds"
+        android:layout_gravity="center"
         android:columnCount="4">
 
         <TextView
@@ -21,6 +23,7 @@
             android:text="" />
 
         <TextView
+            android:id="@+id/c2"
             android:layout_columnWeight="1"
             android:layout_height="100dp"
             android:background="#887646"
@@ -28,8 +31,8 @@
             android:gravity="center"
             android:text="" />
 
-
         <TextView
+            android:id="@+id/c3"
             android:layout_columnWeight="1"
             android:layout_height="100dp"
             android:background="#8876"
@@ -38,6 +41,7 @@
             android:text="" />
 
         <TextView
+            android:id="@+id/c4"
             android:layout_columnWeight="1"
             android:layout_height="100dp"
             android:background="#88aa46"
@@ -45,6 +49,41 @@
             android:gravity="center"
             android:text="" />
 
+        <TextView
+            android:id="@+id/c5"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#456782"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/c6"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#823346"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/c7"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#ff6f4f"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/c8"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:background="#127632"
+            android:layout_gravity="fill"
+            android:gravity="center"
+            android:text="" />
     </GridLayout>
 
 

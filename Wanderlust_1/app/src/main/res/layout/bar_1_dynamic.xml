@@ -4,25 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
     <FrameLayout
+        android:id="@+id/bar_1_map_fragment_dy"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
-        android:id="@+id/bar_1_map_fragment_dy" />
-
+        android:layout_height="310dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/bg_black"
         android:background="@color/bg_white"
-        android:text="----------------------"/>
+        android:text=""
+        android:textColor="@color/bg_black" />
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
         android:id="@+id/bar_1_ctrl_fragment_dy"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
 </LinearLayout>
