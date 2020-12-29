@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.wanderlust.MapView;
+import com.example.wanderlust.Map.MapView;
 import com.example.wanderlust.R;
 
 import java.lang.reflect.Field;

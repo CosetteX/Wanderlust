@@ -46,7 +46,7 @@
             android:text="text"
             />
 
-        <com.example.wanderlust.NineGridLayout
+        <com.example.wanderlust.Bar_1.NineGridLayout
             android:id="@+id/bar_1_Nine"
             android:background="@color/bg_gray"
             android:columnCount="3"
@@ -54,7 +54,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.example.wanderlust.NineGridLayout>
+        </com.example.wanderlust.Bar_1.NineGridLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

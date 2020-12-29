@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_1;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+
+import com.example.wanderlust.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +69,7 @@ public class NineGridLayout extends GridLayout {
         // new for 9
         dialog = new ArrayList<Dialog>();
         for(int k=0;k<bmps.size();++k){
-            dialogTmp = new Dialog(getContext(),R.style.FullDialog);
+            dialogTmp = new Dialog(getContext(), R.style.FullDialog);
             dialogTmp.setCancelable(true);
             dialogView = new ImageView(getContext());
             dialogView.setImageBitmap(bmps.get(k));

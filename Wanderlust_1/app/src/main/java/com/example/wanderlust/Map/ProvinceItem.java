@@ -1,4 +1,4 @@
-package com.example.wanderlust.todo;
+package com.example.wanderlust.Map;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;

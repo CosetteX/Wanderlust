@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Map;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -22,8 +22,8 @@ import android.widget.ArrayAdapter;
 import androidx.core.graphics.PathParser;
 
 import com.example.wanderlust.Bar_1.Bar_1_Selector;
+import com.example.wanderlust.R;
 import com.example.wanderlust.dbmanager.DatabaseHelper;
-import com.example.wanderlust.todo.ProvinceItem;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -92,7 +92,7 @@ public class MapView extends View {
 
     private void init(Context context) {
         this.context = context;
-        adapter = ArrayAdapter.createFromResource(getContext(),R.array.privinceTable, android.R.layout.simple_expandable_list_item_1);
+        adapter = ArrayAdapter.createFromResource(getContext(), R.array.privinceTable, android.R.layout.simple_expandable_list_item_1);
         paint = new Paint();
         paint.setAntiAlias(true);
         loadThread.start();

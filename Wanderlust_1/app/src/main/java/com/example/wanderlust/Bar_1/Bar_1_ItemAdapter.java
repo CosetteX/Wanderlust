@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.wanderlust.NineGridLayout;
 import com.example.wanderlust.R;
 
 import java.util.List;

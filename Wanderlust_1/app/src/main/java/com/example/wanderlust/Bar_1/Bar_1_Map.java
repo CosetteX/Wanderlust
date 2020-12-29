@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.wanderlust.MapView;
+import com.example.wanderlust.Map.MapView;
 
 public class Bar_1_Map extends Fragment {
 
