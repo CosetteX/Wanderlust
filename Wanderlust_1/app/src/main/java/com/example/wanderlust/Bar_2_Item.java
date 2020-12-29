@@ -9,8 +9,6 @@ public class Bar_2_Item {
     private String name;
     private String date;
     private String time;
-    private String city;
-    private String type;
     private List<Bitmap> bmps = null;
 
     public Bar_2_Item(String name){
