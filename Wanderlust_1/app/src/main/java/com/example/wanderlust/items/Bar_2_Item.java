@@ -7,22 +7,17 @@ package com.example.wanderlust.items;
  * 5.发布日期的日期
  * 根据发布日期查询
  */
-public class Bar_2_Item_new {
+public class Bar_2_Item {
     private long _id;
     private String scheduleContent;
     private String scheduleImgUrl;
     private String scheduleType;
     private String scheduleLocation;
-<<<<<<< HEAD
+
     private String scheduleDate;
     private String scheduleTime;
 
-    public Bar_2_Item_new(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, String scheduleDate, String scheduleTime) {
-=======
-    private Long scheduleDate;
-
-    public Bar_2_Item_new(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, Long scheduleDate) {
->>>>>>> 31e70a928f48566179ec37decb13b737efa8325d
+    public Bar_2_Item(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, String scheduleDate, String scheduleTime) {
         this.scheduleContent = scheduleContent;
         this.scheduleImgUrl = scheduleImgUrl;
         this._id = _id;
@@ -71,12 +66,8 @@ public class Bar_2_Item_new {
         this.scheduleLocation = scheduleLocation;
     }
 
-    public Long getScheduleDate() {
+    public String getScheduleDate() {
         return scheduleDate;
-    }
-
-    public void setScheduleDate(Long scheduleDate) {
-        this.scheduleDate = scheduleDate;
     }
 
     public String getScheduleTime() {

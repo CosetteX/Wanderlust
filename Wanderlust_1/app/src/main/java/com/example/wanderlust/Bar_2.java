@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
 import com.example.wanderlust.adapter.ScheduleListAdapter;
-import com.example.wanderlust.items.Bar_2_Item_new;
+import com.example.wanderlust.items.Bar_2_Item;
 import com.example.wanderlust.dbmanager.ScheduleDao;
 import com.example.wanderlust.utils.StringUtils;
 import com.necer.calendar.BaseCalendar;
@@ -45,7 +45,7 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
     private String mDate;//当前日期
     private Button btnAddItem;
     private ScheduleDao scheduleDao;
-    private List<Bar_2_Item_new> bar2ItemnewList = new ArrayList<>();
+    private List<Bar_2_Item> bar2ItemnewList = new ArrayList<>();
     private ScheduleListAdapter adapter;
 
     @Nullable
@@ -107,7 +107,7 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
     }
 
     private void setRecyclListData() {
-        bar2ItemnewList = scheduleDao.queyrByDateScheduleList(String.valueOf(StringUtils.parse(mDate).getTime()));
+        bar2ItemnewList = scheduleDao.queyrByDateScheduleList(mDate);
         adapter.setNewData(bar2ItemnewList);
     }
 
