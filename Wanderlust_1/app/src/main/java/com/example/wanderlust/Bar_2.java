@@ -13,17 +13,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
+import com.example.wanderlust.adapter.ScheduleListAdapter;
+import com.example.wanderlust.items.Bar_2_Item_new;
+import com.example.wanderlust.dbmanager.ScheduleDao;
 import com.necer.calendar.BaseCalendar;
 import com.necer.calendar.Miui9Calendar;
-import com.necer.enumeration.MultipleNumModel;
 import com.necer.listener.OnCalendarChangedListener;
-import com.necer.listener.OnCalendarMultipleChangedListener;
-import com.necer.painter.InnerPainter;
 
 import org.joda.time.LocalDate;
 
@@ -44,6 +43,9 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
     private LocalDate selectedDate;
     private String mDate;//当前日期
     private Button btnAddItem;
+    private ScheduleDao scheduleDao;
+    private List<Bar_2_Item_new> bar2ItemnewList = new ArrayList<>();
+    private ScheduleListAdapter adapter;
 
     @Nullable
     @Override
@@ -55,6 +57,9 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
         date = view.findViewById(R.id.item_date);
         today = view.findViewById(R.id.bar_today);
         btnAddItem = view.findViewById(R.id.bar_2_additem);
+
+        scheduleDao = new ScheduleDao(getActivity());
+
 
         btnAddItem.setOnClickListener(this);
         today.setOnClickListener(new View.OnClickListener() {
@@ -75,11 +80,13 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
                 int months = localDate.getMonthOfYear();
                 mDate = years + "-" + months + "-" + mothOrDay;
                 date.setText(mDate);
-                Log.d("Dong", "--->>>>>>>>>" + years + "-" + months +"-"+mothOrDay);
+                setRecyclListData();
+                Log.d("Dong", "--->>>>>>>>>" + years + "-" + months +"-"+ mothOrDay);
             }
         });
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        adapter = new ScheduleListAdapter(bar2ItemnewList);
+        recyclerView.setAdapter(adapter);
         return view;
     }
 
@@ -88,17 +95,19 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
         year=localDate.getValue(0)+"";
         month=localDate.getValue(1)+"";
         day=localDate.getValue(2)+"";
-
         return year+"-"+month+"-"+day;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(!isResumeFirst){
-                image.setVisibility(View.VISIBLE);
-        }
-        isResumeFirst = false;
+        //查询当前日期的列表内容
+        setRecyclListData();
+    }
+
+    private void setRecyclListData() {
+        bar2ItemnewList = scheduleDao.queyrByDateScheduleList(mDate);
+        adapter.setNewData(bar2ItemnewList);
     }
 
     @Override
@@ -110,4 +119,6 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
+
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_marginTop="@dimen/margin_size_10"
+            android:layout_marginLeft="@dimen/margin_size_15"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_30"
+            android:text="日程内容"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:layout_marginLeft="@dimen/margin_size_15"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_30"
+                android:text="日程时间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_marginRight="@dimen/margin_size_15"
+                android:gravity="right"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:layout_marginLeft="@dimen/margin_size_15"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_30"
+                android:text="日程位置"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:layout_marginLeft="@dimen/margin_size_15"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_30"
+                android:text="日程类型"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_status"
+                android:layout_marginRight="@dimen/margin_size_15"
+                android:gravity="right"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:layout_marginLeft="@dimen/margin_size_15"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/text_size_30"
+                android:text="日程状态"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="@dimen/margin_size_5"
+        android:background="#ddd"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+</LinearLayout>

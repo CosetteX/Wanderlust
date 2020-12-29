@@ -19,38 +19,99 @@
             android:layout_height="wrap_content"
             android:text="日程内容"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="@null"
-            android:hint="请输入日程内容"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="#ddd" />
+            android:layout_marginTop="@dimen/margin_size_15"
+            android:background="@drawable/shape_gray_corner_bg"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:maxLength="50"
+                android:gravity="top"
+                android:hint="请输入你的日程内容~"
+                android:minLines="5"
+                android:textColor="@color/text_2a"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="选择图片"
+            android:text="选择图片 (选填，限9张)"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <!--此處需要加選擇相冊的代碼-->
-
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="2dp"
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="日程类型"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <!--选择日程类型-->
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="日程类型"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/tv_choose_type"
+                android:drawableRight="@mipmap/icon_right"
+                android:text="请选择"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="城市选择"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_choose_city"
+                android:drawableRight="@mipmap/icon_right"
+                android:text="请选择"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/btn_commit"
+        android:layout_marginTop="@dimen/margin_size_35"
+        android:text="提交"
+        android:layout_marginRight="@dimen/margin_size_15"
+        android:layout_marginLeft="@dimen/margin_size_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
