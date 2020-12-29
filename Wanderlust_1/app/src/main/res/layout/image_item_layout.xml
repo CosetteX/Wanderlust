@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/image_item_add_ll"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_dash_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_add_img" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/image_item_rl"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:visibility="visible">
+        <com.example.wanderlust.widget.RoundedImage.RoundedImageView
+            android:layout_marginTop="3dp"
+            android:id="@+id/image_item_iv"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="3dp"
+             />
+        <ImageView
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="3dp"
+            android:id="@+id/image_item_del_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_close_img" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -8,6 +8,9 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.runtime.Permission;
+
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener  {
 
     private RadioGroup rg_tab_bar;
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();
         rb_channel.setChecked(true);
+
+        requestPermission();
     }
 
     private void bindViews() {
@@ -87,5 +92,17 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     break;
             }
         }
+    }
+
+
+    //获取相机相关权限
+    private void requestPermission() {
+        AndPermission.with(this)
+                .runtime()
+                .permission(Permission.CAMERA, Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                .onGranted(data -> {
+
+                })
+                .start();
     }
 }

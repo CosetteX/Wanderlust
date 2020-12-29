@@ -26,14 +26,12 @@ public class Bar_1_ItemAdapter extends RecyclerView.Adapter<Bar_1_ItemAdapter.Vi
     public Bar_1_ItemAdapter(List<Bar_1_Item> itemList) {
         this.itemList = itemList;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bar_1_recyclerview_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Bar_1_Item item = itemList.get(position);
@@ -42,7 +40,6 @@ public class Bar_1_ItemAdapter extends RecyclerView.Adapter<Bar_1_ItemAdapter.Vi
         holder.nineGridLayout.setBmp(item.getBmps());
         holder.nineGridLayout.refresh();
     }
-
     @Override
     public int getItemCount() {
         return itemList.size();

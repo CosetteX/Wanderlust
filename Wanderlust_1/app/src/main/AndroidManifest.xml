@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wanderlust">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +25,10 @@
         <activity android:name="com.example.wanderlust.Bar_1_Color" />
         <activity android:name="com.example.wanderlust.Bar_1_Flag" />
         <activity android:name="com.example.wanderlust.todo.Test_AddInfo" />
+        <activity
+            android:name=".activity.InsertAttendanceInfoActivity"
+            android:screenOrientation="behind" />
+        <activity android:name=".activity.ScheduleDetailActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
