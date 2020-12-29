@@ -30,18 +30,18 @@ public class ScheduleDao {
     public List<Bar_2_Item_new> queryScheduleList() {
         SQLiteDatabase db = helper.getWritableDatabase();
         List<Bar_2_Item_new> bar2Itemnews = new ArrayList<Bar_2_Item_new>();
-        String sql = "select * from u_schedule";
+        String sql = "select * from u_schedule ORDER BY 0+schedule_date ASC";
         Cursor cursor = db.rawQuery(sql, new String[]{
 
         });
-        db.execSQL("create table if not exists u_schedule(_id integer primary key,content varchar(20),imgUrl varchar(120),type varchar(20),location varchar(120),schedule_date varchar(60))");
+        db.execSQL("create table if not exists u_schedule(_id integer primary key,content varchar(20),imgUrl varchar(120),type varchar(20),location varchar(120),schedule_date long)");
         while(cursor.moveToNext()){
             bar2Itemnews.add(new Bar_2_Item_new(cursor.getLong(cursor.getColumnIndex("_id")),
                             cursor.getString(cursor.getColumnIndex("content")),
                             cursor.getString(cursor.getColumnIndex("imgUrl")),
                             cursor.getString(cursor.getColumnIndex("type")),
                             cursor.getString(cursor.getColumnIndex("location")),
-                            cursor.getString(cursor.getColumnIndex("schedule_date"))
+                            cursor.getLong(cursor.getColumnIndex("schedule_date"))
                     )
             );
         }
@@ -73,7 +73,7 @@ public class ScheduleDao {
                             cursor.getString(cursor.getColumnIndex("imgUrl")),
                             cursor.getString(cursor.getColumnIndex("type")),
                             cursor.getString(cursor.getColumnIndex("location")),
-                            cursor.getString(cursor.getColumnIndex("schedule_date"))
+                            cursor.getLong(cursor.getColumnIndex("schedule_date"))
                     )
             );
         }

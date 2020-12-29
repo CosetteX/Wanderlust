@@ -24,13 +24,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table if not exists u_schedule" +
-                "(_id integer primary key," +
-                "content varchar(20)," +
-                "imgUrl varchar(120)," +
-                "type varchar(20)," +
-                "location varchar(120)," +
-                "schedule_date varchar(60))");
+        db.execSQL("create table if not exists u_schedule(_id integer primary key,content varchar(20),imgUrl varchar(120),type varchar(20),location varchar(120),schedule_date varchar(60))");
     }
 
     @Override

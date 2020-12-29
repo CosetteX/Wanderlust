@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private void requestPermission() {
         AndPermission.with(this)
                 .runtime()
-                .permission(Permission.CAMERA, Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                .permission(Permission.ACCESS_FINE_LOCATION,Permission.CAMERA, Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
                 .onGranted(data -> {
 
                 })
