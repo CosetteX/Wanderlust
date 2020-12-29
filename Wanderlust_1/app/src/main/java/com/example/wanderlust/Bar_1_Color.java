@@ -136,5 +136,4 @@ public class Bar_1_Color extends Activity implements View.OnClickListener {
         resColorView.setBackgroundColor(resValue);
     }
 
-
 }

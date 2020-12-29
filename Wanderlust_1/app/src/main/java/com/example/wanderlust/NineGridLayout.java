@@ -26,6 +26,7 @@ public class NineGridLayout extends GridLayout {
     public NineGridLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
     public NineGridLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }

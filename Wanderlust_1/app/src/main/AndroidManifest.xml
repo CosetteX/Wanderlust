@@ -21,6 +21,9 @@
         <activity android:name="com.example.wanderlust.Bar_1_Color" />
         <activity android:name="com.example.wanderlust.Bar_1_Flag" />
         <activity android:name="com.example.wanderlust.todo.Test_AddInfo" />
+        <activity
+            android:name=".activity.InsertAttendanceInfoActivity"
+            android:screenOrientation="behind" />
     </application>
 
 </manifest>

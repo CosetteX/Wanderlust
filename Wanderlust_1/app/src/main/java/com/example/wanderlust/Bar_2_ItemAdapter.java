@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class Bar_1_ItemAdapter extends RecyclerView.Adapter<Bar_1_ItemAdapter.ViewHolder> {
-    private List<Bar_1_Item> itemList;
+public class Bar_2_ItemAdapter extends RecyclerView.Adapter<Bar_2_ItemAdapter.ViewHolder> {
+    private List<Bar_2_Item> itemList;
     static class ViewHolder extends RecyclerView.ViewHolder {
         NineGridLayout nineGridLayout;
         TextView info = null;
@@ -23,7 +23,7 @@ public class Bar_1_ItemAdapter extends RecyclerView.Adapter<Bar_1_ItemAdapter.Vi
             nineGridLayout = view.findViewById(R.id.bar_1_Nine);
         }
     }
-    public Bar_1_ItemAdapter(List<Bar_1_Item> itemList) {
+    public Bar_2_ItemAdapter(List<Bar_2_Item> itemList) {
         this.itemList = itemList;
     }
     @Override
@@ -34,7 +34,7 @@ public class Bar_1_ItemAdapter extends RecyclerView.Adapter<Bar_1_ItemAdapter.Vi
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Bar_1_Item item = itemList.get(position);
+        Bar_2_Item item = itemList.get(position);
         holder.info.setText(item.getInfo());
         holder.text.setText(item.getName());
         holder.nineGridLayout.setBmp(item.getBmps());

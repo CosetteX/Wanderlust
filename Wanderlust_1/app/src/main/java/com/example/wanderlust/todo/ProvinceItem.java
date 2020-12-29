@@ -53,6 +53,7 @@ public class ProvinceItem {
             paint.setColor(drawColor);
             canvas.drawPath(path,paint);
 
+
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.BLACK);
             canvas.drawPath(path,paint);
