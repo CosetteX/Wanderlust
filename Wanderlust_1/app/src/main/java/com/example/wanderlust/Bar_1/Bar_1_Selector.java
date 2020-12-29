@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.wanderlust.MapView;
+import com.example.wanderlust.R;
+
 import java.lang.reflect.Field;
 
 public class Bar_1_Selector extends Fragment {
@@ -24,7 +27,7 @@ public class Bar_1_Selector extends Fragment {
     Button btn_confirm;
     Button btn_color;
     Button btn_flag;
-    String name = "Zhejiang";
+    String name = "浙江省";
     String chosenCity = null;
 
     MapView map;

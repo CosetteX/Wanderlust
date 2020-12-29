@@ -1,10 +1,12 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_1;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+
+import com.example.wanderlust.R;
 
 public class Bar_1_SelectorView extends View {
 

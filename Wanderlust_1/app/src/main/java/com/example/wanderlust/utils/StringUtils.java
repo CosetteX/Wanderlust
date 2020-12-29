@@ -1,6 +1,7 @@
 package com.example.wanderlust.utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -69,5 +70,19 @@ public class StringUtils {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String time = format.format(date);
         return time;
+    }
+
+    public static Date parse(String strDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return sdf.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getStringDate(long time) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(time);
     }
 }

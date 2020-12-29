@@ -21,6 +21,8 @@ import android.widget.ArrayAdapter;
 
 import androidx.core.graphics.PathParser;
 
+import com.example.wanderlust.Bar_1.Bar_1_Selector;
+import com.example.wanderlust.dbmanager.DatabaseHelper;
 import com.example.wanderlust.todo.ProvinceItem;
 
 import org.w3c.dom.Document;

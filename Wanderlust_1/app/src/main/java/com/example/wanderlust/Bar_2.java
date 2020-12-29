@@ -20,6 +20,7 @@ import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
 import com.example.wanderlust.adapter.ScheduleListAdapter;
 import com.example.wanderlust.items.Bar_2_Item_new;
 import com.example.wanderlust.dbmanager.ScheduleDao;
+import com.example.wanderlust.utils.StringUtils;
 import com.necer.calendar.BaseCalendar;
 import com.necer.calendar.Miui9Calendar;
 import com.necer.listener.OnCalendarChangedListener;
@@ -106,7 +107,7 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
     }
 
     private void setRecyclListData() {
-        bar2ItemnewList = scheduleDao.queyrByDateScheduleList(mDate);
+        bar2ItemnewList = scheduleDao.queyrByDateScheduleList(String.valueOf(StringUtils.parse(mDate).getTime()));
         adapter.setNewData(bar2ItemnewList);
     }
 
@@ -114,8 +115,7 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bar_2_additem:
-                startActivity(new Intent(getActivity(), InsertAttendanceInfoActivity.class)
-                        .putExtra("currentDay",mDate));
+                startActivity(new Intent(getActivity(), InsertAttendanceInfoActivity.class).putExtra("currentDay",mDate));
                 break;
         }
     }

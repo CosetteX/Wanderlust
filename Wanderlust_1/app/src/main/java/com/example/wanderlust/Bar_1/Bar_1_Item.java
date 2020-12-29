@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_1;
 
 import android.graphics.Bitmap;
 

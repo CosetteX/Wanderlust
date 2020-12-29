@@ -1,14 +1,11 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_1;
 
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.example.wanderlust.dbmanager.DatabaseHelper;
+import com.example.wanderlust.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,6 @@ public class Bar_1_Flag extends Activity {
     String city;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
-    int fid = 0;
 
     private List<Bar_1_Flag_Item> itemList = new ArrayList<Bar_1_Flag_Item>();
 
@@ -45,9 +44,8 @@ public class Bar_1_Flag extends Activity {
         city = intent.getStringExtra("message");
         textView.setText(city.split("_")[1]);
 
-        dbHelper = new DatabaseHelper(this, "wanderlust_db", null, 1);
+        dbHelper = new DatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
-        fid = getID();
 
         // Button
         buttonAdd = findViewById(R.id.bar_1_flag_add);
@@ -55,16 +53,13 @@ public class Bar_1_Flag extends Activity {
             @Override
             public void onClick(View v) {
                 ContentValues values = new ContentValues();
-                values.put("id", fid);
+                values.put("id", System.currentTimeMillis());
                 values.put("province", city.split("_")[0]);
                 values.put("city", city.split("_")[1]);
                 values.put("content", content.getText().toString());
                 values.put("top",0);
                 db.insert("Flag", null, values);
-                fid++;
-                refreshID();
                 refresh();
-                Log.e("fid",fid+"");
             }
         });
 
@@ -92,28 +87,6 @@ public class Bar_1_Flag extends Activity {
         cursor.close();
     }
 
-    public int getID(){
-        Cursor cursor = db.query("CountID", new String[]{"fid"}, null,null ,null, null, null);
-        int id = -1;
-        while(cursor.moveToNext()){
-            id = cursor.getInt(cursor.getColumnIndex("fid"));
-        }
-        cursor.close();
-        if(id==-1){
-            ContentValues values = new ContentValues();
-            values.put("id", 0);
-            values.put("fid", 0);
-            db.insert("CountID",null, values);
-            return 0;
-        }
-        return id;
-    }
-
-    public void refreshID(){
-        ContentValues values = new ContentValues();
-        values.put("fid", fid);
-        db.update("CountID", values, null,null);
-    }
 
 
 }

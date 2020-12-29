@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,10 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.wanderlust.Bar_1_Display" />
-        <activity android:name="com.example.wanderlust.Bar_1_Color" />
-        <activity android:name="com.example.wanderlust.Bar_1_Flag" />
-        <activity android:name="com.example.wanderlust.todo.Test_AddInfo" />
+        <activity android:name="com.example.wanderlust.Bar_1.Bar_1_Display" />
+        <activity android:name="com.example.wanderlust.Bar_1.Bar_1_Color" />
+        <activity android:name="com.example.wanderlust.Bar_1.Bar_1_Flag" />
         <activity
             android:name=".activity.InsertAttendanceInfoActivity"
             android:screenOrientation="behind" />

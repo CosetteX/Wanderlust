@@ -104,7 +104,6 @@ public class ImagePickerAdapter extends RecyclerView.Adapter<ImagePickerAdapter.
                 add_img_ll.setVisibility(View.VISIBLE);
                 image_item_rl.setVisibility(View.GONE);
                 clickPosition = -1;
-
             } else {
                 add_img_ll.setVisibility(View.GONE);
                 image_item_rl.setVisibility(View.VISIBLE);

@@ -13,15 +13,23 @@ public class Bar_2_Item_new {
     private String scheduleImgUrl;
     private String scheduleType;
     private String scheduleLocation;
+<<<<<<< HEAD
     private String scheduleDate;
+    private String scheduleTime;
 
-    public Bar_2_Item_new(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, String scheduleDate) {
+    public Bar_2_Item_new(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, String scheduleDate, String scheduleTime) {
+=======
+    private Long scheduleDate;
+
+    public Bar_2_Item_new(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, Long scheduleDate) {
+>>>>>>> 31e70a928f48566179ec37decb13b737efa8325d
         this.scheduleContent = scheduleContent;
         this.scheduleImgUrl = scheduleImgUrl;
         this._id = _id;
         this.scheduleType = scheduleType;
         this.scheduleLocation = scheduleLocation;
         this.scheduleDate = scheduleDate;
+        this.scheduleTime = scheduleTime;
     }
     public long get_id() {
         return _id;
@@ -63,11 +71,15 @@ public class Bar_2_Item_new {
         this.scheduleLocation = scheduleLocation;
     }
 
-    public String getScheduleDate() {
+    public Long getScheduleDate() {
         return scheduleDate;
     }
 
-    public void setScheduleDate(String scheduleDate) {
+    public void setScheduleDate(Long scheduleDate) {
         this.scheduleDate = scheduleDate;
+    }
+
+    public String getScheduleTime() {
+        return scheduleTime;
     }
 }

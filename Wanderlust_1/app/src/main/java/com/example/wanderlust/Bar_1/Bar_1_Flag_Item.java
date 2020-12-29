@@ -1,14 +1,12 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_1;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
+import com.example.wanderlust.dbmanager.DatabaseHelper;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
 public class Bar_1_Flag_Item extends SwipeMenuLayout{

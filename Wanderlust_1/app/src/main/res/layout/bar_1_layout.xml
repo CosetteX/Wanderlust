@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="310dp"
         android:id="@+id/bar_1_map_fragment"
-        android:name="com.example.wanderlust.Bar_1_Map"
+        android:name="com.example.wanderlust.Bar_1.Bar_1_Map"
         />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:id="@+id/bar_1_ctrl_fragment"
-        android:name="com.example.wanderlust.Bar_1_Selector"
+        android:name="com.example.wanderlust.Bar_1.Bar_1_Selector"
         />
 
 </LinearLayout>
