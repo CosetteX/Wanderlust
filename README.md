@@ -37,3 +37,9 @@ Wanderlust 2020 Winter
 
 - 修改date的string类型为long，对日程排序；
 - 取消了添加日程时必须加图片的限制；（添加了定位功能，但是在模拟器里有时候会出bug，定位不了，在手机上就不会，之前也是这样，不知道为什么）
+
+2020.12.29 night commit
+- 基于2020.12.29下午commit的版本，整合了臧和xk的数据库
+
+2020.12.30 xk commit in the morning
+将12.29晚上commit的版本整合到了有新的数据库的版本
