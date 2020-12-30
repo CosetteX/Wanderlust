@@ -32,7 +32,7 @@ import com.lljjcoder.citywheel.CityConfig;
  */
 import com.lljjcoder.citypickerview.widget.CityPicker;
 //import com.lljjcoder.citypickerview.widget.CityPicker;
-import com.lljjcoder.style.citypickerview.CityPickerView;
+//import com.lljjcoder.style.citypickerview.CityPickerView;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -214,7 +214,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         mPicker.showCityPicker();
 
         */
-        CityPicker cityPicker=new cityPicker.Builder(InsertAttendanceInfoActivity.this)
+        CityPicker cityPicker=new CityPicker.Builder(InsertAttendanceInfoActivity.this)
                 .textSize(14)
                 .title("地址选择")
                 .titleBackgroundColor("#FFFFFF")
