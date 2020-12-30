@@ -21,10 +21,12 @@ public class ScheduleListAdapter extends BaseQuickAdapter<Bar_2_Item, BaseViewHo
 
 
         helper.setText(R.id.tv_content, item.getScheduleContent())
-                .setText(R.id.tv_date, item.getScheduleDate())
+                //.setText(R.id.tv_date, item.getScheduleDate())
+                .setText(R.id.tv_date,StringUtils.getStringDate(item.getScheduleDate()))
                 .setText(R.id.tv_location, item.getScheduleLocation())
                 .setText(R.id.tv_type, item.getScheduleType());
-        int value = StringUtils.compareDate(StringUtils.getCurrentTime(),  item.getScheduleDate());
+       // int value = StringUtils.compareDate(StringUtils.getCurrentTime(),  item.getScheduleDate());
+        int value=StringUtils.compareDate(StringUtils.getCurrentTime(),StringUtils.getStringDate(item.getScheduleDate()));
         if (value == -1) {
             //当前时间小于创建时间  过期了
             helper.setText(R.id.tv_status, "已过期");

@@ -14,10 +14,12 @@ public class Bar_2_Item {
     private String scheduleType;
     private String scheduleLocation;
 
-    private String scheduleDate;
+    //private String scheduleDate;
+    private Long scheduleDate;
     private String scheduleTime;
 
-    public Bar_2_Item(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, String scheduleDate, String scheduleTime) {
+    //public Bar_2_Item(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, String scheduleDate, String scheduleTime) {
+    public Bar_2_Item(long _id, String scheduleContent, String scheduleImgUrl, String scheduleType, String scheduleLocation, Long scheduleDate, String scheduleTime) {
         this.scheduleContent = scheduleContent;
         this.scheduleImgUrl = scheduleImgUrl;
         this._id = _id;
@@ -66,10 +68,14 @@ public class Bar_2_Item {
         this.scheduleLocation = scheduleLocation;
     }
 
-    public String getScheduleDate() {
+    //public String getScheduleDate() {
+    public Long getScheduleDate() {
         return scheduleDate;
     }
 
+    public void setScheduleDate(Long scheduleDate) {
+        this.scheduleDate = scheduleDate;
+    }
     public String getScheduleTime() {
         return scheduleTime;
     }

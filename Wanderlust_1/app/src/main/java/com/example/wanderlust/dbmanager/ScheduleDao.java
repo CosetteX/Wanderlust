@@ -44,7 +44,8 @@ public class ScheduleDao {
         SQLiteDatabase db = helper.getWritableDatabase();
         List<Bar_2_Item> bar2Itemnews = new ArrayList<Bar_2_Item>();
 
-        String sql = "select * from Event";
+       // String sql = "select * from Event";
+        String sql = "select * from Event ORDER BY 0+date ASC";
         Cursor cursor = db.rawQuery(sql, new String[]{});
         //db.execSQL("create table if not exists Event(id integer primary key,content varchar(20),imgUrl varchar(120),type varchar(20),location varchar(120),schedule_date varchar(60))");
 
@@ -55,7 +56,8 @@ public class ScheduleDao {
                             cursor.getString(cursor.getColumnIndex("imgUrl")),
                             cursor.getString(cursor.getColumnIndex("type")),
                             cursor.getString(cursor.getColumnIndex("location")),
-                            cursor.getString(cursor.getColumnIndex("date")),
+                           // cursor.getString(cursor.getColumnIndex("date")),
+                            cursor.getLong(cursor.getColumnIndex("date")),
                             cursor.getString(cursor.getColumnIndex("time"))
                     )
             );
@@ -89,7 +91,8 @@ public class ScheduleDao {
                             cursor.getString(cursor.getColumnIndex("imgUrl")),
                             cursor.getString(cursor.getColumnIndex("type")),
                             cursor.getString(cursor.getColumnIndex("location")),
-                            cursor.getString(cursor.getColumnIndex("date")),
+                            //cursor.getString(cursor.getColumnIndex("date")),
+                            cursor.getLong(cursor.getColumnIndex("date")),
                             cursor.getString(cursor.getColumnIndex("time"))
                     )
             );

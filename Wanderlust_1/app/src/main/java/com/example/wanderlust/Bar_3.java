@@ -48,7 +48,8 @@ public class Bar_3 extends Fragment {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Bar_2_Item bar2Item = (Bar_2_Item) adapter.getItem(position);
                 if (bar2Item != null) {
-                    String strDate = bar2Item.getScheduleDate();
+                    //String strDate = bar2Item.getScheduleDate();
+                    Long strDate=bar2Item.getScheduleDate();
                     String strLocation = bar2Item.getScheduleLocation();
                     String strType = bar2Item.getScheduleType();
                     String strUlr = bar2Item.getScheduleImgUrl();
