@@ -14,6 +14,7 @@ import com.example.wanderlust.adapter.ImagePickerAdapter;
 import com.example.wanderlust.adapter.ImagePickerAdapter2;
 import com.example.wanderlust.utils.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleDetailActivity extends FragmentActivity {
@@ -60,7 +61,9 @@ public class ScheduleDetailActivity extends FragmentActivity {
         });
 
 
-        List<String> mList1 = StringUtils.stringsToList(strUlr);
+        List<String> mList1= new ArrayList<String>();
+        if(strUlr!=null)
+            mList1 = StringUtils.stringsToList(strUlr);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         GridLayoutManager manager = new GridLayoutManager(this, 4);
         recyclerView.setLayoutManager(manager);

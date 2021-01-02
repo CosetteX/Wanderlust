@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
+import com.example.wanderlust.activity.ScheduleDetailActivity;
 import com.example.wanderlust.adapter.ScheduleListAdapter;
 import com.example.wanderlust.items.Bar_2_Item;
 import com.example.wanderlust.dbmanager.ScheduleDao;
@@ -88,6 +90,27 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         adapter = new ScheduleListAdapter(bar2ItemnewList);
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Bar_2_Item bar2Item = (Bar_2_Item) adapter.getItem(position);
+                if (bar2Item != null) {
+                    //String strDate = bar2Item.getScheduleDate();
+                    Long strDate=bar2Item.getScheduleDate();
+                    String strLocation = bar2Item.getScheduleLocation();
+                    String strType = bar2Item.getScheduleType();
+                    String strUlr = bar2Item.getScheduleImgUrl();
+                    String strContent = bar2Item.getScheduleContent();
+                    startActivity(new Intent(getActivity(), ScheduleDetailActivity.class)
+                            .putExtra("strDate", strDate)
+                            .putExtra("strLocation", strLocation)
+                            .putExtra("strType", strType)
+                            .putExtra("strUlr", strUlr)
+                            .putExtra("strContent", strContent));
+                }
+            }
+        });
         return view;
     }
 

@@ -275,9 +275,12 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             return;
         }
 
-        Bar_2_Item bar2Itemnew =
-               new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
+        Bar_2_Item bar2Itemnew = null;
+        if(mList1.size()!=0)
+            bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
                // new Bar_2_Item(System.currentTimeMillis(),strContent, StringUtils.listToString(mList1,","),strType,strCity,currentDay,"21:21");
+        else
+            bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,null,strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
         ScheduleDao dao = new ScheduleDao(InsertAttendanceInfoActivity.this);
         dao.add(bar2Itemnew);
 
@@ -288,7 +291,6 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         WheelViewDataBean dataBean = new WheelViewDataBean();
         dataBean.setName("工作");
         dataBean.setId(1);
-
 
         WheelViewDataBean dataBean2 = new WheelViewDataBean();
         dataBean2.setName("旅游");

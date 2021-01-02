@@ -50,7 +50,6 @@ public class ScheduleDao {
         //db.execSQL("create table if not exists Event(id integer primary key,content varchar(20),imgUrl varchar(120),type varchar(20),location varchar(120),schedule_date varchar(60))");
 
         while(cursor.moveToNext()){
-            Log.e("idid",cursor.getString(cursor.getColumnIndex("content")));
             bar2Itemnews.add(new Bar_2_Item(cursor.getLong(cursor.getColumnIndex("id")),
                             cursor.getString(cursor.getColumnIndex("content")),
                             cursor.getString(cursor.getColumnIndex("imgUrl")),
@@ -82,7 +81,6 @@ public class ScheduleDao {
      */
     public List<Bar_2_Item> queyrByDateScheduleList(String schedule_date) {
         SQLiteDatabase db = helper.getWritableDatabase();
-        Log.e("idid",schedule_date);
         Cursor cursor = db.rawQuery("select * from Event where date=?", new String[]{schedule_date});
         List<Bar_2_Item> bar2Itemnews = new ArrayList<Bar_2_Item>();
         while(cursor.moveToNext()){

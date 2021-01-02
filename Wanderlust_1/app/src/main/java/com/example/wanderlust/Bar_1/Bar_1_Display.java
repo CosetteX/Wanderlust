@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wanderlust.dbmanager.DatabaseHelper;
 import com.example.wanderlust.R;
+import com.example.wanderlust.utils.StringUtils;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -47,7 +48,7 @@ public class Bar_1_Display extends Activity {
         textView.setText(city.split("_")[1]);
 
         //delete
-        //this.deleteDatabase("wanderlust_db");
+        //this.deleteDatabase("wanderlust_db1");
         //this.deleteDatabase("wanderlust_db.db");
 
         dbHelper = new DatabaseHelper(this);
@@ -63,14 +64,14 @@ public class Bar_1_Display extends Activity {
 
     private void refreshItems() {
         itemList.clear();
-        Cursor cursor = db.query("Event", new String[]{"imgUrl","content", "date", "time"}, "location=?", new String[]{city}, null, null, "date ,time");
-        String curID = "";
-        String curDate = "";
+        Log.e("1.1",city.replace("_",""));
+        Cursor cursor = db.query("Event", new String[]{"imgUrl","content", "date", "time"}, "location=?", new String[]{city.replace("_","")}, null, null, "date ,time");
+        Long curDate = null;
         String curTime = "";
         String curContent = "";
         String curImgUrl = "";
         while (cursor.moveToNext()) {
-            curDate = cursor.getString(cursor.getColumnIndex("date"));
+            curDate = cursor.getLong(cursor.getColumnIndex("date"));
             curTime = cursor.getString(cursor.getColumnIndex("time"));
             curContent = cursor.getString(cursor.getColumnIndex("content"));
             curImgUrl = cursor.getString(cursor.getColumnIndex("imgUrl"));
@@ -79,20 +80,22 @@ public class Bar_1_Display extends Activity {
         cursor.close();
     }
 
-    private void getPic(String text, String theDate, String theTime, String theImgUrl){
-        Bar_1_Item item = new Bar_1_Item(text,theDate,theTime); // item(text,pictires)
-        String [] urlList = theImgUrl.split(",");
-        for (String u:urlList) {
-            Bitmap bmp = null;
-            try{
-                URL url = new URL("file://"+u);
-                InputStream in = url.openStream();
-                bmp = BitmapFactory.decodeStream(in);
+    private void getPic(String text, Long theDate, String theTime, String theImgUrl){
+        Bar_1_Item item = new Bar_1_Item(text, StringUtils.getStringDate(theDate),theTime); // item(text,pictires)
+        if(theImgUrl!=null){
+            String [] urlList = theImgUrl.split(",");
+            for (String u:urlList) {
+                Bitmap bmp = null;
+                try{
+                    URL url = new URL("file://"+u);
+                    InputStream in = url.openStream();
+                    bmp = BitmapFactory.decodeStream(in);
+                }
+                catch (Exception e){
+                    Log.e("BMP",e.toString());
+                }
+                item.addImg(bmp);
             }
-            catch (Exception e){
-                Log.e("BMP",e.toString());
-            }
-            item.addImg(bmp);
         }
         itemList.add(item);
     }
