@@ -26,6 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Flag
         sql = "create table if not exists Flag (id varchar(20) PRIMARY KEY,province varchar(20),city varchar(20),content varchar(100),top int)";
         db.execSQL(sql);
+        // Info
+        sql = "create table if not exists Setting (name varchar(50) PRIMARY KEY, url varchar(200), color int, password varchar(100))";
+        db.execSQL(sql);
     }
 
     @Override

@@ -30,6 +30,7 @@
             android:name=".activity.InsertAttendanceInfoActivity"
             android:screenOrientation="behind" />
         <activity android:name=".activity.ScheduleDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Bar_4_Usr"/>
     </application>
 
 </manifest>
