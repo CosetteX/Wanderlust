@@ -1,77 +1,56 @@
-package com.example.wanderlust;
+package com.example.wanderlust.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.wanderlust.activity.EditScheduleActivity;
-import com.example.wanderlust.activity.ScheduleDetailActivity;
-import com.example.wanderlust.activity.SearchActivity;
+import com.example.wanderlust.R;
 import com.example.wanderlust.adapter.ScheduleListAdapter;
-import com.example.wanderlust.items.Bar_2_Item;
 import com.example.wanderlust.dbmanager.ScheduleDao;
+import com.example.wanderlust.items.Bar_2_Item;
 import com.example.wanderlust.utils.BaseDialog;
+import com.example.wanderlust.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bar_3 extends Fragment {
-    private ScheduleListAdapter adapter;
-    private RecyclerView recyclerView;
-    private List<Bar_2_Item> bar2ItemList = new ArrayList<>();
+public class SearchActivity extends FragmentActivity implements View.OnClickListener {
+
+    private EditText etSearch;
     private ScheduleDao scheduleDao;
+    private RecyclerView recyclerView;
+    private ScheduleListAdapter adapter;
+    private List<Bar_2_Item> bar2ItemList = new ArrayList<>();
+    private List<Bar_2_Item> listAll;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bar_3, container, false);
-        initView(view);
-        return view;
-    }
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+        etSearch = findViewById(R.id.et_search);
+        TextView tvSearch = findViewById(R.id.tv_search);
+        tvSearch.setOnClickListener(this);
 
-    private void initView(View view) {
-        scheduleDao = new ScheduleDao(getActivity());
-        recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        scheduleDao = new ScheduleDao(this);
+        listAll = scheduleDao.queryScheduleList();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         adapter = new ScheduleListAdapter(bar2ItemList);
         recyclerView.setAdapter(adapter);
-
-        EditText etSearch = view.findViewById(R.id.et_search);
-        TextView tvSearch = view.findViewById(R.id.tv_search);
-
-        etSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                startActivity(new Intent(getActivity(), SearchActivity.class));
-            }
-        });
-
-        etSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SearchActivity.class));
-            }
-        });
-
-        tvSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SearchActivity.class));
-            }
-        });
 
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -84,7 +63,7 @@ public class Bar_3 extends Fragment {
                     String strType = bar2Item.getScheduleType();
                     String strUlr = bar2Item.getScheduleImgUrl();
                     String strContent = bar2Item.getScheduleContent();
-                    startActivity(new Intent(getActivity(), ScheduleDetailActivity.class)
+                    startActivity(new Intent(SearchActivity.this, ScheduleDetailActivity.class)
                             .putExtra("strDate", strDate)
                             .putExtra("strLocation", strLocation)
                             .putExtra("strType", strType)
@@ -102,10 +81,57 @@ public class Bar_3 extends Fragment {
             }
         });
 
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() <= 0) {
+                    bar2ItemList.clear();
+                    adapter.setNewData(null);
+                }
+            }
+        });
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_search:
+                //搜索
+                filterData();
+                break;
+        }
+    }
+
+
+    private void filterData() {
+        String search = etSearch.getText().toString().trim();
+        if (TextUtils.isEmpty(search)) {
+            Toast.makeText(SearchActivity.this, "请输入搜索内容", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        for (int i = 0; i < listAll.size(); i++) {
+            Bar_2_Item bean = listAll.get(i);
+            if (StringUtils.getStringDate(bean.getScheduleDate()).contains(search) || bean.getScheduleLocation().contains(search)) {
+                bar2ItemList.add(bean);
+            }
+        }
+        adapter.setNewData(bar2ItemList);
+    }
+
+
+
     private void showDeleteAndEditDialog(int position) {
-        Dialog dialog = BaseDialog.showDialog(getActivity(), R.layout.dialog_delete_schedule);
+        Dialog dialog = BaseDialog.showDialog(SearchActivity.this, R.layout.dialog_delete_schedule);
         TextView tvDelete= dialog.findViewById(R.id.tv_delete);
         TextView tvEdit = dialog.findViewById(R.id.tv_edit);
         TextView tvCancel = dialog.findViewById(R.id.cancel_tv);
@@ -139,7 +165,7 @@ public class Bar_3 extends Fragment {
                     String strType = bar2Item.getScheduleType();
                     String strUlr = bar2Item.getScheduleImgUrl();
                     String strContent = bar2Item.getScheduleContent();
-                    startActivity(new Intent(getActivity(), EditScheduleActivity.class)
+                    startActivity(new Intent(SearchActivity.this, EditScheduleActivity.class)
                             .putExtra("strDate", strDate)
                             .putExtra("strLocation", strLocation)
                             .putExtra("strType", strType)
@@ -156,13 +182,5 @@ public class Bar_3 extends Fragment {
                 dialog.dismiss();
             }
         });
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //查询所有的日程
-        bar2ItemList = scheduleDao.queryScheduleList();
-        adapter.setNewData(bar2ItemList);
     }
 }

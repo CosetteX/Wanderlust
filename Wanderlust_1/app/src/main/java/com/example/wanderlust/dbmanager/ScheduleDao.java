@@ -50,12 +50,12 @@ public class ScheduleDao {
         //db.execSQL("create table if not exists Event(id integer primary key,content varchar(20),imgUrl varchar(120),type varchar(20),location varchar(120),schedule_date varchar(60))");
 
         while(cursor.moveToNext()){
+            //Log.e("idid",cursor.getString(cursor.getColumnIndex("content")));
             bar2Itemnews.add(new Bar_2_Item(cursor.getLong(cursor.getColumnIndex("id")),
                             cursor.getString(cursor.getColumnIndex("content")),
                             cursor.getString(cursor.getColumnIndex("imgUrl")),
                             cursor.getString(cursor.getColumnIndex("type")),
                             cursor.getString(cursor.getColumnIndex("location")),
-                           // cursor.getString(cursor.getColumnIndex("date")),
                             cursor.getLong(cursor.getColumnIndex("date")),
                             cursor.getString(cursor.getColumnIndex("time"))
                     )
@@ -64,6 +64,33 @@ public class ScheduleDao {
         return bar2Itemnews;
     }
 
+    /***
+     * 根据插入时间删除日程
+     * @param currentTime
+     */
+    public void deleteScheduleData(long currentTime) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.delete("Event", "id=?", new String[]{String.valueOf(currentTime)});
+        db.close();
+    }
+
+    /***
+     * 更新日志信息
+     * @param bar2Itemnew
+     * @param id
+     */
+    public void updateScheduleData(Bar_2_Item bar2Itemnew,long id) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("location", bar2Itemnew.getScheduleLocation());
+        values.put("date", bar2Itemnew.getScheduleDate());
+        //values.put("time", bar2Itemnew.getScheduleTime());
+        values.put("content",bar2Itemnew.getScheduleContent());
+        values.put("imgUrl",bar2Itemnew.getScheduleImgUrl());
+        values.put("type",bar2Itemnew.getScheduleType());
+        db.update("Event", values, "id=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
 
     /***
      * 清空数据
@@ -81,6 +108,7 @@ public class ScheduleDao {
      */
     public List<Bar_2_Item> queyrByDateScheduleList(String schedule_date) {
         SQLiteDatabase db = helper.getWritableDatabase();
+       // Log.e("idid",schedule_date);
         Cursor cursor = db.rawQuery("select * from Event where date=?", new String[]{schedule_date});
         List<Bar_2_Item> bar2Itemnews = new ArrayList<Bar_2_Item>();
         while(cursor.moveToNext()){

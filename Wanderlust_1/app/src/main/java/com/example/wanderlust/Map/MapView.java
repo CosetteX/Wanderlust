@@ -65,6 +65,7 @@ public class MapView extends View {
         db.delete("ProvinceColor","pname=?",new String[]{province});
         ContentValues values = new ContentValues();
         values.put("pname", province);
+        //Log.e("province",province);
         values.put("color", Color);
         db.insert("ProvinceColor", null, values);
         // Set current
@@ -78,6 +79,7 @@ public class MapView extends View {
 
     public MapView(Context context, Bar_1_Selector c) {
         super(context);
+       // dbHelper = new DatabaseHelper(getContext(), "wanderlust_db", null, 1);
         dbHelper = new DatabaseHelper(getContext());
         db = dbHelper.getWritableDatabase();
         init(context);

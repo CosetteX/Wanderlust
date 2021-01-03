@@ -30,9 +30,8 @@ import com.lljjcoder.bean.DistrictBean;
 import com.lljjcoder.bean.ProvinceBean;
 import com.lljjcoder.citywheel.CityConfig;
  */
-import com.lljjcoder.citypickerview.widget.CityPicker;
 //import com.lljjcoder.citypickerview.widget.CityPicker;
-//import com.lljjcoder.style.citypickerview.CityPickerView;
+import com.lljjcoder.citypickerview.widget.CityPicker;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -192,28 +191,6 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
     }
 
     private void chooseCity() {
-       /* CityConfig cityConfig = new CityConfig.Builder()
-                .province("北京") //设置默认显示省份
-                .build();
-        mPicker.setConfig(cityConfig);
-        //监听选择点击事件及返回结果
-        mPicker.setOnCityItemClickListener(new OnCityItemClickListener() {
-            @Override
-            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
-                //省份
-                if (province != null && city != null && district != null) {
-                    tvChooseCity.setText(province.getName() + city.getName());
-                }
-            }
-            @Override
-            public void onCancel() {
-
-            }
-        });
-        //显示
-        mPicker.showCityPicker();
-
-        */
         CityPicker cityPicker=new CityPicker.Builder(InsertAttendanceInfoActivity.this)
                 .textSize(14)
                 .title("地址选择")
@@ -259,12 +236,6 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             return;
         }
 
-       /* if (mList1.isEmpty()) {
-            Toast.makeText(InsertAttendanceInfoActivity.this, "日程图片不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        */
-
         if (TextUtils.isEmpty(strType)||"请选择".equals(strType)) {
             Toast.makeText(InsertAttendanceInfoActivity.this, "请选择日程类型", Toast.LENGTH_SHORT).show();
             return;
@@ -275,10 +246,12 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             return;
         }
 
+      //  Bar_2_Item bar2Itemnew =
+      //         new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
+               // new Bar_2_Item(System.currentTimeMillis(),strContent, StringUtils.listToString(mList1,","),strType,strCity,currentDay,"21:21");
         Bar_2_Item bar2Itemnew = null;
         if(mList1.size()!=0)
             bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
-               // new Bar_2_Item(System.currentTimeMillis(),strContent, StringUtils.listToString(mList1,","),strType,strCity,currentDay,"21:21");
         else
             bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,null,strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
         ScheduleDao dao = new ScheduleDao(InsertAttendanceInfoActivity.this);
@@ -291,6 +264,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         WheelViewDataBean dataBean = new WheelViewDataBean();
         dataBean.setName("工作");
         dataBean.setId(1);
+
 
         WheelViewDataBean dataBean2 = new WheelViewDataBean();
         dataBean2.setName("旅游");

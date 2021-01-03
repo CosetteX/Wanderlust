@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:background="@color/colorPrimary"
-    tools:showIn="@layout/activity_insert_attendance_info">
+    >
 
     <TextView
         android:drawableLeft="@mipmap/icon_back"

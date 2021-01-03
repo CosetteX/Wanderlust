@@ -25,7 +25,7 @@ public class ScheduleDetailActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_detail);
 
-        String strDate = getIntent().getStringExtra("strDate");
+        long strDate = getIntent().getLongExtra("strDate",0);
         String strLocation =  getIntent().getStringExtra("strLocation");
         String strType = getIntent().getStringExtra("strType");
         String strUlr = getIntent().getStringExtra("strUlr");
@@ -39,10 +39,10 @@ public class ScheduleDetailActivity extends FragmentActivity {
         TextView tvType = findViewById(R.id.tv_type);
 
         tvContent.setText(strContent);
-        tvDate.setText(strDate);
+        tvDate.setText(StringUtils.getStringDate(strDate));
         tvCity.setText(strLocation);
         tvType.setText(strType);
-        int value = StringUtils.compareDate(StringUtils.getCurrentTime(), strDate);
+        int value = StringUtils.compareDate(StringUtils.getCurrentTime(), StringUtils.getStringDate(strDate));
         if (value == -1) {
             //当前时间小于创建时间  过期了
             tvStatus.setText("已过期");

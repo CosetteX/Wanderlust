@@ -18,22 +18,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
 import com.example.wanderlust.Bar_1.Bar_1_Color;
 import com.example.wanderlust.dbmanager.DatabaseHelper;
 import com.luck.picture.lib.PictureSelector;
-import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
 import java.io.InputStream;
 import java.net.URL;
 
-
 public class Bar_4 extends Fragment {
-
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
     TextView usr_name = null;
     ImageView usr_head = null;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,10 +86,8 @@ public class Bar_4 extends Fragment {
         });
 
 
-
         return view;
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -48,6 +48,7 @@ public class Bar_1_Display extends Activity {
         textView.setText(city.split("_")[1]);
 
         //delete
+        //this.deleteDatabase("wanderlust_db");
         //this.deleteDatabase("wanderlust_db1");
         //this.deleteDatabase("wanderlust_db.db");
 
@@ -96,6 +97,7 @@ public class Bar_1_Display extends Activity {
                 }
                 item.addImg(bmp);
             }
+
         }
         itemList.add(item);
     }

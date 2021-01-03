@@ -31,6 +31,12 @@
             android:screenOrientation="behind" />
         <activity android:name=".activity.ScheduleDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".Bar_4_Usr"/>
+        <activity
+            android:name=".activity.EditScheduleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

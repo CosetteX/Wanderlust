@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,11 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.wanderlust.activity.ScheduleDetailActivity;
+
+import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
 import com.example.wanderlust.adapter.ScheduleListAdapter;
 import com.example.wanderlust.items.Bar_2_Item;
 import com.example.wanderlust.dbmanager.ScheduleDao;
@@ -143,6 +145,4 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
-
 }
