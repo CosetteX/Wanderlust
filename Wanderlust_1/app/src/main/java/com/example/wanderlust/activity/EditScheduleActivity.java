@@ -89,7 +89,9 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
             }
         });
 
-        List<String> tmpList = StringUtils.stringsToList(strUlr);
+        List<String> tmpList = new ArrayList<String>();
+        if(strUlr!=null)
+            tmpList = StringUtils.stringsToList(strUlr);
         for (int i = 0; i < tmpList.size(); i++) {
             mList1.add(tmpList.get(i));
         }

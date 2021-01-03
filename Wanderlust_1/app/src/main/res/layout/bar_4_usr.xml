@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/bar_4_name"
-        android:text="输入昵称"
+        android:hint="输入昵称"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button

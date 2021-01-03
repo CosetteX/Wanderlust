@@ -85,6 +85,41 @@ public class Bar_4 extends Fragment {
             }
         });
 
+        // layout report
+        RelativeLayout layout_report = view.findViewById(R.id.report);
+        layout_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Bar_4_Report.class);
+                startActivity(intent); // report
+            }
+        });
+        // layout lock
+        RelativeLayout layout_lock = view.findViewById(R.id.lock);
+        layout_lock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor cursor =db.query("Setting",new String[]{"password"},null,null,null,null,null);
+                String pwd = null;
+                while (cursor.moveToNext()) {
+                    pwd = cursor.getString(cursor.getColumnIndex("password"));
+                }
+                Intent intent = new Intent(getContext(), Bar_4_Lock.class);
+                intent.putExtra("pwd",pwd);
+                startActivityForResult(intent,2); // lock
+            }
+        });
+
+        // layout about us
+        RelativeLayout layout_us = view.findViewById(R.id.about_us);
+        layout_us.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Bar_4_Us.class);
+                startActivity(intent); // about us
+            }
+        });
+
 
         return view;
     }
@@ -115,5 +150,12 @@ public class Bar_4 extends Fragment {
             values.put("url", res);
             db.update("Setting",values,null,null);
         }
+        else if (requestCode == 2){
+            String res  = data.getStringExtra("pwd");
+            ContentValues values = new ContentValues();
+            values.put("password", res);
+            db.update("Setting",values,null,null);
+        }
+
     }
 }
