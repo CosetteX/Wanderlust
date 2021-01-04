@@ -44,5 +44,6 @@ dependencies {
    // compile 'liji.library.dev:citypickerview:0.7.0'
     //implementation 'liji.library.dev:citypickerview:5.2.4'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    compile 'site.gemus:openingstartanimation:1.0.0'
 
 }

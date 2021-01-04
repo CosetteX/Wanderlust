@@ -15,6 +15,9 @@ import com.yanzhenjie.permission.runtime.Permission;
 
 import java.util.ArrayList;
 
+import site.gemus.openingstartanimation.OpeningStartAnimation;
+import site.gemus.openingstartanimation.RedYellowBlueDrawStrategy;
+
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener  {
 
     private RadioGroup rg_tab_bar;
@@ -58,6 +61,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         list.add(fragment3);
         list.add(fragment4);
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),list);
+        OpeningStartAnimation openingStartAnimation = new OpeningStartAnimation.Builder(this)
+                .setDrawStategy(new RedYellowBlueDrawStrategy())
+                .setAnimationInterval(2000)
+                .setAnimationFinishTime(2000)
+                .setAppStatement("欢迎使用浪迹 Wanderlust") //设置一句话描述
+                .create();
+        openingStartAnimation.show(this);
     }
     private void bindViews() {
         rg_tab_bar = (RadioGroup) findViewById(R.id.rg_tab_bar);
