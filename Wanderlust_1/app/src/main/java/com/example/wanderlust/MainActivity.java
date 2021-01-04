@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         list.add(fragment3);
         list.add(fragment4);
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),list);
+        //添加动画 
         OpeningStartAnimation openingStartAnimation = new OpeningStartAnimation.Builder(this)
                 .setDrawStategy(new RedYellowBlueDrawStrategy())
                 .setAnimationInterval(2000)
