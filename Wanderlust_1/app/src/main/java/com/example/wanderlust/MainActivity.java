@@ -1,6 +1,7 @@
 package com.example.wanderlust;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -63,10 +64,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         list.add(fragment4);
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),list);
         OpeningStartAnimation openingStartAnimation = new OpeningStartAnimation.Builder(this)
-                .setDrawStategy(new LineDrawStrategy())
+                .setDrawStategy(new RedYellowBlueDrawStrategy())
                 .setAnimationInterval(2000)
                 .setAnimationFinishTime(2000)
                 .setAppStatement("欢迎使用浪迹 Wanderlust") //设置一句话描述
+                .setColorOfAppStatement(Color.parseColor("#87a7d6"))
+                .setColorOfAppIcon(Color.parseColor("#87a7d6"))
+                .setColorOfAppName(Color.parseColor("#87a7d6"))
                 .create();
         openingStartAnimation.show(this);
     }
