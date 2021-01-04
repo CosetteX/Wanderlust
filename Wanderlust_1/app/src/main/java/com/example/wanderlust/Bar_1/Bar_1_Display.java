@@ -49,7 +49,7 @@ public class Bar_1_Display extends Activity {
 
         //delete
         //this.deleteDatabase("wanderlust_db");
-        //this.deleteDatabase("wanderlust_db1");
+        //this.deleteDatabase("wanderlust_db2");
         //this.deleteDatabase("wanderlust_db.db");
 
         dbHelper = new DatabaseHelper(this);
@@ -65,7 +65,6 @@ public class Bar_1_Display extends Activity {
 
     private void refreshItems() {
         itemList.clear();
-        Log.e("1.1",city.replace("_",""));
         Cursor cursor = db.query("Event", new String[]{"imgUrl","content", "date", "time"}, "location=?", new String[]{city.replace("_","")}, null, null, "date ,time");
         Long curDate = null;
         String curTime = "";

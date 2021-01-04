@@ -265,7 +265,6 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         dataBean.setName("工作");
         dataBean.setId(1);
 
-
         WheelViewDataBean dataBean2 = new WheelViewDataBean();
         dataBean2.setName("旅游");
         dataBean2.setId(2);

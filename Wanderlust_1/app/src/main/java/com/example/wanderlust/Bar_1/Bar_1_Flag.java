@@ -53,7 +53,7 @@ public class Bar_1_Flag extends Activity {
             @Override
             public void onClick(View v) {
                 ContentValues values = new ContentValues();
-                values.put("id", System.currentTimeMillis());
+                values.put("id", System.currentTimeMillis()+"");
                 values.put("province", city.split("_")[0]);
                 values.put("city", city.split("_")[1]);
                 values.put("content", content.getText().toString());

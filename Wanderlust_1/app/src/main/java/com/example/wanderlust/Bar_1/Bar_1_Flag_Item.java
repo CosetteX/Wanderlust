@@ -19,7 +19,8 @@ public class Bar_1_Flag_Item extends SwipeMenuLayout{
     SQLiteDatabase db = null;
 
     void init(){
-        dbHelper = new DatabaseHelper(getContext(), "wanderlust_db", null, 1);
+        //dbHelper = new DatabaseHelper(getContext(), "wanderlust_db", null, 1);
+        dbHelper = new DatabaseHelper(getContext());
         db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query("Flag", new String[]{"top"}, "id=?", new String[]{id}, null, null, null);
         while (cursor.moveToNext()) {
