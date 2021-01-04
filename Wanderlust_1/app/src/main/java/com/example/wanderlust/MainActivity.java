@@ -6,10 +6,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.wanderlust.Bar_1.Bar_1;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener  {
 
@@ -26,18 +30,35 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
 
+    private ArrayList<Fragment> list = new ArrayList<Fragment>();
+
+    private Bar_1 fragment1 = null;
+    private Bar_2 fragment2 = null;
+    private Bar_3 fragment3 = null;
+    private Bar_4 fragment4 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+        initData();
         bindViews();
         rb_channel.setChecked(true);
 
         requestPermission();
     }
 
+    private void initData() {
+        fragment1 = new Bar_1();
+        fragment2 = new Bar_2();
+        fragment3 = new Bar_3();
+        fragment4 = new Bar_4();
+        list.add(fragment1);
+        list.add(fragment2);
+        list.add(fragment3);
+        list.add(fragment4);
+        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),list);
+    }
     private void bindViews() {
         rg_tab_bar = (RadioGroup) findViewById(R.id.rg_tab_bar);
         rb_channel = (RadioButton) findViewById(R.id.rb_channel);
@@ -70,8 +91,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
     }
+
     @Override
     public void onPageSelected(int position) {
+        if (position == 1) {
+            fragment2.setRecyclListData();
+        }
     }
     @Override
     public void onPageScrollStateChanged(int state) {

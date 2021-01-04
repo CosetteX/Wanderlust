@@ -6,80 +6,137 @@
     android:orientation="vertical">
     <include layout="@layout/layout_title" />
 
-
-    <LinearLayout
+<LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+    <!--日程内容显示-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:src="@drawable/state_none" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="日程内容"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="15dp"
+        android:text="日程内容:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+    <View
+        android:layout_marginTop="@dimen/margin_size_5"
+        android:layout_marginBottom="@dimen/margin_size_5"
+        android:background="#ddd"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <!---日程日期显示-->
+
+     <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:src="@drawable/calendar" />
+
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_size_15"
+                android:layout_marginRight="@dimen/margin_size_15"
+                android:layout_marginLeft="@dimen/margin_size_15"
+                android:textSize="@dimen/text_size_30"
+                android:textColor="#808080"
+                android:textStyle="bold"
+                android:text="日程日期:"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+     </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="@dimen/margin_size_15"
+                android:layout_marginLeft="@dimen/margin_size_15"
+                android:textSize="@dimen/text_size_30"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="日程日期:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="@dimen/margin_size_5"
+        android:layout_marginBottom="@dimen/margin_size_5"
+        android:background="#ddd"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <!--日程状态显示-->
+     <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:src="@drawable/state_done" />
 
         <TextView
             android:layout_marginTop="@dimen/margin_size_15"
             android:layout_marginRight="@dimen/margin_size_15"
             android:layout_marginLeft="@dimen/margin_size_15"
+            android:layout_marginBottom="5dp"
             android:textSize="@dimen/text_size_30"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:text="日程内容:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tv_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="@dimen/margin_size_15"
-            android:layout_marginLeft="@dimen/margin_size_15"
-            android:textSize="@dimen/text_size_30"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"
-            android:text="日程内容:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_marginTop="@dimen/margin_size_5"
-            android:layout_marginBottom="@dimen/margin_size_5"
-            android:background="#ddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px" />
-        <TextView
-            android:layout_marginTop="@dimen/margin_size_15"
-            android:layout_marginRight="@dimen/margin_size_15"
-            android:layout_marginLeft="@dimen/margin_size_15"
-            android:textSize="@dimen/text_size_30"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:text="日程日期:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="@dimen/margin_size_15"
-            android:layout_marginLeft="@dimen/margin_size_15"
-            android:textSize="@dimen/text_size_30"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"
-            android:text="日程内容:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_marginTop="@dimen/margin_size_5"
-            android:layout_marginBottom="@dimen/margin_size_5"
-            android:background="#ddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px" />
-        <TextView
-            android:layout_marginTop="@dimen/margin_size_15"
-            android:layout_marginRight="@dimen/margin_size_15"
-            android:layout_marginLeft="@dimen/margin_size_15"
-            android:textSize="@dimen/text_size_30"
-            android:textColor="@android:color/black"
+            android:textColor="#808080"
             android:textStyle="bold"
             android:text="日程状态:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+            </LinearLayout>
+     </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_status"
@@ -89,28 +146,47 @@
             android:textSize="@dimen/text_size_30"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
-            android:text="日程内容:"
+            android:text="日程状态:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
 
-        <View
-            android:layout_marginTop="@dimen/margin_size_5"
-            android:layout_marginBottom="@dimen/margin_size_5"
-            android:background="#ddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px" />
-        <TextView
-            android:layout_marginTop="@dimen/margin_size_15"
-            android:layout_marginRight="@dimen/margin_size_15"
-            android:layout_marginLeft="@dimen/margin_size_15"
-            android:textSize="@dimen/text_size_30"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:text="发布城市:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_size_5"
+        android:layout_marginBottom="@dimen/margin_size_5"
+        android:background="#ddd" />
 
+    <!--发布城市显示-->
+     <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:src="@drawable/state_todo" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/margin_size_15"
+                    android:layout_marginRight="@dimen/margin_size_15"
+                    android:layout_marginLeft="@dimen/margin_size_15"
+                    android:textSize="@dimen/text_size_30"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#808080"
+                    android:textStyle="bold"
+                    android:text="发布城市:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+     </RelativeLayout>
         <TextView
             android:id="@+id/tv_city"
             android:layout_marginTop="2dp"
@@ -119,7 +195,7 @@
             android:textSize="@dimen/text_size_30"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
-            android:text="日程内容:"
+            android:text="城市:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -130,16 +206,39 @@
             android:background="#ddd"
             android:layout_width="match_parent"
             android:layout_height="1px" />
+
+
+    <!---日程类型-->
+     <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:src="@drawable/state_type" />
+
+
         <TextView
             android:layout_marginTop="@dimen/margin_size_15"
             android:layout_marginRight="@dimen/margin_size_15"
             android:layout_marginLeft="@dimen/margin_size_15"
             android:textSize="@dimen/text_size_30"
-            android:textColor="@android:color/black"
+            android:layout_marginBottom="5dp"
+            android:textColor="#808080"
             android:textStyle="bold"
             android:text="日程类型:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+            </LinearLayout>
+     </RelativeLayout>
+
 
         <TextView
             android:id="@+id/tv_type"
@@ -149,7 +248,7 @@
             android:textSize="@dimen/text_size_30"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
-            android:text="日程内容:"
+            android:text="类型:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -159,24 +258,46 @@
             android:background="#ddd"
             android:layout_width="match_parent"
             android:layout_height="1px" />
+
+
+    <!--日程状态显示-->
+     <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:src="@drawable/camera" />
+
         <TextView
             android:layout_marginTop="@dimen/margin_size_15"
             android:layout_marginRight="@dimen/margin_size_15"
             android:layout_marginLeft="@dimen/margin_size_15"
             android:textSize="@dimen/text_size_30"
-            android:textColor="@android:color/black"
+            android:textColor="#808080"
             android:textStyle="bold"
             android:text="日程图片:"
+            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+            </LinearLayout>
+     </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="2dp"
             android:id="@+id/recyclerView"
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
+ </LinearLayout>
 
 
 
-</LinearLayout>

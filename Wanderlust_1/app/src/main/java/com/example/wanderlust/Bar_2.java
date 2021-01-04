@@ -131,7 +131,7 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
         setRecyclListData();
     }
 
-    private void setRecyclListData() {
+    public void setRecyclListData() {
        // bar2ItemnewList = scheduleDao.queyrByDateScheduleList(mDate);
        bar2ItemnewList=scheduleDao.queyrByDateScheduleList(String.valueOf(StringUtils.parse(mDate).getTime()));
         adapter.setNewData(bar2ItemnewList);

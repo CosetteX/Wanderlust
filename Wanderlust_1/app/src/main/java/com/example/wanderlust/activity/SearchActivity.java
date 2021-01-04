@@ -114,6 +114,7 @@ public class SearchActivity extends FragmentActivity implements View.OnClickList
 
 
     private void filterData() {
+        bar2ItemList.clear();
         String search = etSearch.getText().toString().trim();
         if (TextUtils.isEmpty(search)) {
             Toast.makeText(SearchActivity.this, "请输入搜索内容", Toast.LENGTH_SHORT).show();

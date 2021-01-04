@@ -4,10 +4,69 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <include layout="@layout/layout_search_title" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_15"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_28" />
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_15"
+            android:layout_marginRight="@dimen/margin_size_15"
+            android:layout_weight="1"
+            android:background="@drawable/btn_search_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/icon_search"
+                android:drawablePadding="@dimen/margin_size_11"
+                android:hint="输入日期或者位置查询"
+                android:paddingTop="8dp"
+                android:paddingBottom="7dp"
+                android:textColor="@color/white"
+                android:textColorHint="#cacaca"
+                android:textSize="@dimen/text_size_30" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_marginRight="@dimen/margin_size_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_15"
+            android:text="搜索"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_28" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
+
 </LinearLayout>

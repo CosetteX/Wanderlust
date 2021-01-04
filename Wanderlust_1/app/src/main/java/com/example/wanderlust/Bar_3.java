@@ -49,15 +49,8 @@ public class Bar_3 extends Fragment {
         adapter = new ScheduleListAdapter(bar2ItemList);
         recyclerView.setAdapter(adapter);
 
-        EditText etSearch = view.findViewById(R.id.et_search);
+        TextView etSearch = view.findViewById(R.id.et_search);
         TextView tvSearch = view.findViewById(R.id.tv_search);
-
-        etSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                startActivity(new Intent(getActivity(), SearchActivity.class));
-            }
-        });
 
         etSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +115,10 @@ public class Bar_3 extends Fragment {
                 Log.d("Dong", "-- >> " + bar2ItemList.size());
                 adapter.setNewData(bar2ItemList);
 
+                if (bar2ItemList.isEmpty()) {
+                    View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_empty, null);
+                    adapter.setEmptyView(view);
+                }
                 dialog.dismiss();
 
             }
@@ -164,5 +161,9 @@ public class Bar_3 extends Fragment {
         //查询所有的日程
         bar2ItemList = scheduleDao.queryScheduleList();
         adapter.setNewData(bar2ItemList);
+        if (bar2ItemList.isEmpty()) {
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_empty, null);
+            adapter.setEmptyView(view);
+        }
     }
 }

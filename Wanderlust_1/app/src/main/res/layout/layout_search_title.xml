@@ -41,7 +41,7 @@
             android:hint="输入日期或者位置查询"
             android:paddingTop="8dp"
             android:paddingBottom="7dp"
-            android:textColor="@color/color_222"
+            android:textColor="@color/white"
             android:textColorHint="#cacaca"
             android:textSize="@dimen/text_size_30" />
     </LinearLayout>
