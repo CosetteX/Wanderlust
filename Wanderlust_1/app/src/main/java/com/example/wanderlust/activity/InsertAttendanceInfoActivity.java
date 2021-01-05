@@ -303,7 +303,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             return;
         }
 
-        if (TextUtils.isEmpty(strCity)||"请选择".equals(strCity)) {
+       if (TextUtils.isEmpty(strCity)||"请选择".equals(strCity)) {
             Toast.makeText(InsertAttendanceInfoActivity.this, "请选择城市", Toast.LENGTH_SHORT).show();
             return;
         }

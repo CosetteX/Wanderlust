@@ -85,6 +85,7 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
         btnCommit.setOnClickListener(this);
         etContent = findViewById(R.id.et_content);
         tvChooseCity = findViewById(R.id.tv_choose_city);
+        tvChooseTime=findViewById(R.id.tv_choose_time);
         tvChooseCity.setOnClickListener(this);
         tvChooseTime.setOnClickListener(this);
 
@@ -153,11 +154,11 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
                 //选择城市
                 chooseCity();
                 break;
-           /* case R.id.tv_choose_time:
+            case R.id.tv_choose_time:
                 showTimePickerDialog(this,  4, tvChooseTime, calendar);
                 break;
 
-            */
+
         }
     }
 

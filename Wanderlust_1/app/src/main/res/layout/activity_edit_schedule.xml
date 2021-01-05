@@ -88,7 +88,7 @@
 
 
         <!--日程发布时间-->
-       <!-- <TextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_size_15"
@@ -127,11 +127,6 @@
             android:layout_marginTop="@dimen/margin_size_5"
             android:layout_marginBottom="@dimen/margin_size_5"
             android:background="#ddd" />
-
--->
-
-
-
 
 
         <!---日程发布城市-->
