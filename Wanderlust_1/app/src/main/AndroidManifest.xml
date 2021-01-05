@@ -30,10 +30,10 @@
             android:name=".activity.InsertAttendanceInfoActivity"
             android:screenOrientation="behind" />
         <activity android:name=".activity.ScheduleDetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Bar_4_Usr"/>
-        <activity android:name=".Bar_4_Us"/>
-        <activity android:name=".Bar_4_Lock"/>
-        <activity android:name=".Bar_4_Report"/>
+        <activity android:name=".Bar_4.Bar_4_Usr"/>
+        <activity android:name=".Bar_4.Bar_4_Us"/>
+        <activity android:name=".Bar_4.Bar_4_Lock"/>
+        <activity android:name=".Bar_4.Bar_4_Report"/>
         <activity
             android:name=".activity.EditScheduleActivity"
             android:screenOrientation="portrait" />

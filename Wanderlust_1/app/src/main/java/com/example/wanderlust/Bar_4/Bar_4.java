@@ -1,6 +1,8 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_4;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,15 +16,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
-import com.example.wanderlust.Bar_1.Bar_1_Color;
+import com.example.wanderlust.R;
+
 import com.example.wanderlust.dbmanager.DatabaseHelper;
-import com.luck.picture.lib.PictureSelector;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -110,6 +112,34 @@ public class Bar_4 extends Fragment {
             }
         });
 
+        // layout clean
+        RelativeLayout layout_delete = view.findViewById(R.id.clean);
+        layout_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                //builder.setIcon(R.mipmap.ic_launcher);
+                builder.setIcon(R.drawable.icon_delete);
+                builder.setTitle("确定清除数据？");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.delete("Event",null,null);
+                        db.delete("Flag",null,null);
+                        db.delete("ProvinceColor",null,null);
+                        Toast.makeText(getContext(),"数据清除完毕",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         // layout about us
         RelativeLayout layout_us = view.findViewById(R.id.about_us);
         layout_us.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +166,6 @@ public class Bar_4 extends Fragment {
         }
         else if (requestCode == 1 && resultCode == 2) {
             String res = data.getStringExtra("url");
-            Log.e("photo","ok");
             // cur
             try{
                 URL url = new URL("file://"+res);
@@ -150,7 +179,8 @@ public class Bar_4 extends Fragment {
             values.put("url", res);
             db.update("Setting",values,null,null);
         }
-        else if (requestCode == 2){
+        else if (requestCode == 2&& resultCode == 1){
+            Log.e("lock","--");
             String res  = data.getStringExtra("pwd");
             ContentValues values = new ContentValues();
             values.put("password", res);

@@ -28,6 +28,17 @@
             android:text="徐珂"
             android:textColor="@color/bar_gradient_light"
             android:textSize="20sp" />
+        <TextView
+            android:id="@+id/item_email0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_title0"
+            android:layout_marginLeft="50dp"
+            android:paddingTop="20dp"
+            android:clickable="true"
+            android:text="3180103434@zju.edu.cn"
+            android:textColor="@color/bar_gradient_light"
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -50,6 +61,17 @@
             android:layout_alignLeft="@+id/item_priority_A"
             android:layout_marginLeft="50dp"
             android:text="臧天铠"
+            android:textColor="@color/bar_gradient_light"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/item_email1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_title"
+            android:layout_marginLeft="50dp"
+            android:paddingTop="20dp"
+            android:clickable="true"
+            android:text="3180104057@zju.edu.cn"
             android:textColor="@color/bar_gradient_light"
             android:textSize="20sp" />
     </RelativeLayout>

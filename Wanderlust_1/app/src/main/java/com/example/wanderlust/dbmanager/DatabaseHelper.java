@@ -21,8 +21,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table if not exists Event (id varchar(20) PRIMARY KEY,location varchar(20),date varchar(10), time varchar(10),content varchar(100), imgUrl varchar(1000), undo int, type varchar(20))";
         db.execSQL(sql);
-        sql = "create table if not exists Travel (id varchar(20) PRIMARY KEY, date_s date, time_s varchar(10), source varchar(20),date_d date, time_d varchar(10), destination varchar(20), transportation varchar(20))";
-        db.execSQL(sql);
+        //sql = "create table if not exists Travel (id varchar(20) PRIMARY KEY, date_s date, time_s varchar(10), source varchar(20),date_d date, time_d varchar(10), destination varchar(20), transportation varchar(20))";
+        //db.execSQL(sql);
         // Flag
         sql = "create table if not exists Flag (id varchar(20) PRIMARY KEY,province varchar(20),city varchar(20),content varchar(100),top int)";
         db.execSQL(sql);

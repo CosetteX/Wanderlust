@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.wanderlust.Bar_1.Bar_1;
+import com.example.wanderlust.Bar_4.Bar_4;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
 
 import java.util.ArrayList;
 
-import site.gemus.openingstartanimation.LineDrawStrategy;
 import site.gemus.openingstartanimation.OpeningStartAnimation;
 import site.gemus.openingstartanimation.RedYellowBlueDrawStrategy;
 

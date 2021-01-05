@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_4;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -10,9 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
-import com.example.wanderlust.activity.InsertAttendanceInfoActivity;
+import com.example.wanderlust.R;
 import com.example.wanderlust.utils.BaseDialog;
 import com.example.wanderlust.utils.GlideEngine;
 import com.luck.picture.lib.PictureSelector;

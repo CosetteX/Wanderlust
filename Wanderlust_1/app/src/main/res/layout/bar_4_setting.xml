@@ -135,7 +135,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/color"
+        android:id="@+id/clean"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lock"
@@ -153,7 +153,7 @@
             android:paddingLeft="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/icon_color"/>
+            android:src="@drawable/icon_delete"/>
         <TextView
             android:id="@+id/text_4"
             android:layout_width="match_parent"
@@ -162,7 +162,7 @@
             android:paddingTop="5dp"
             android:paddingLeft="10dp"
             android:textSize="15dp"
-            android:text="Color"/>
+            android:text="Clean Data"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
         android:id="@+id/about_us"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/color"
+        android:layout_below="@id/clean"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginTop="20dp"

@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_4;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.example.wanderlust.R;
 
 
 public class Bar_4_Lock extends Activity {

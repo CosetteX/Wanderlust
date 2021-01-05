@@ -1,4 +1,4 @@
-package com.example.wanderlust;
+package com.example.wanderlust.Bar_4;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.wanderlust.R;
 import com.example.wanderlust.dbmanager.DatabaseHelper;
 
 public class Bar_4_Report extends FragmentActivity {
