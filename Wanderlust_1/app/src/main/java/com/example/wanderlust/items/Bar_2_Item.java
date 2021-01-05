@@ -79,4 +79,5 @@ public class Bar_2_Item {
     public String getScheduleTime() {
         return scheduleTime;
     }
+    public void setScheduleTime(String scheduleTime){this.scheduleTime=scheduleTime;}
 }

@@ -94,7 +94,14 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         t.setToNow();
         int hour=t.hour;
         int minute=t.minute;
-        String time=hour+":"+minute;
+        String time;
+
+        if(minute<10){
+           time=hour+":0"+minute;
+        }
+        else{
+             time=hour+":"+minute;
+        }
         tvChooseTime.setText(time);
     }
 
@@ -285,6 +292,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         String strType = tvChooseType.getText().toString().trim();
         String strCity = tvChooseCity.getText().toString().trim();
         String strTime = tvChooseTime.getText().toString().trim();
+
         if (TextUtils.isEmpty(strContent)) {
             Toast.makeText(InsertAttendanceInfoActivity.this, "日程内容不能为空", Toast.LENGTH_SHORT).show();
             return;

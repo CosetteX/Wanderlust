@@ -62,7 +62,7 @@ public class StringUtils {
     }
 
     /*****
-     * 获取当前时间
+     * 获取当前时间（日期）
      * @return
      */
     public static String getCurrentTime() {

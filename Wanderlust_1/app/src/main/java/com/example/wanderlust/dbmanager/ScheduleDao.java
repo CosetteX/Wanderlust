@@ -84,7 +84,7 @@ public class ScheduleDao {
         ContentValues values = new ContentValues();
         values.put("location", bar2Itemnew.getScheduleLocation());
         values.put("date", bar2Itemnew.getScheduleDate());
-        //values.put("time", bar2Itemnew.getScheduleTime());
+        values.put("time", bar2Itemnew.getScheduleTime());
         values.put("content",bar2Itemnew.getScheduleContent());
         values.put("imgUrl",bar2Itemnew.getScheduleImgUrl());
         values.put("type",bar2Itemnew.getScheduleType());

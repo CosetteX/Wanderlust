@@ -1,6 +1,8 @@
 package com.example.wanderlust.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,7 +36,9 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class EditScheduleActivity extends FragmentActivity implements View.OnClickListener, IWheelViewSelectedListener, MyOnClickListener {
 
@@ -51,6 +56,10 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
     private List<String> mList1 = new ArrayList<>();
     private ImagePickerAdapter imageGoodsAdapter;
     private long strDate;
+    private String strTime;
+
+    Calendar calendar= Calendar.getInstance(Locale.CHINA);
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,13 +69,15 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
         initWheelViewData();
         initWheelDialog();
 
-
+        strTime=getIntent().getStringExtra("strTime");
         strDate = getIntent().getLongExtra("strDate",0);
         String strLocation =  getIntent().getStringExtra("strLocation");
         String strType = getIntent().getStringExtra("strType");
         strUlr = getIntent().getStringExtra("strUlr");
         String strContent =getIntent().getStringExtra("strContent");
         id = getIntent().getLongExtra("_id", 0);
+
+
 
         tvChooseType = findViewById(R.id.tv_choose_type);
         tvChooseType.setOnClickListener(this);
@@ -75,11 +86,13 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
         etContent = findViewById(R.id.et_content);
         tvChooseCity = findViewById(R.id.tv_choose_city);
         tvChooseCity.setOnClickListener(this);
+        tvChooseTime.setOnClickListener(this);
 
         //设置数据
         tvChooseCity.setText(strLocation);
         tvChooseType.setText(strType);
         etContent.setText(strContent);
+        tvChooseTime.setText(strTime);
 
         TextView tvTitle = findViewById(R.id.tv_title);
         tvTitle.setText("编辑日程");
@@ -140,7 +153,36 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
                 //选择城市
                 chooseCity();
                 break;
+           /* case R.id.tv_choose_time:
+                showTimePickerDialog(this,  4, tvChooseTime, calendar);
+                break;
+
+            */
         }
+    }
+
+    /**
+     * 时间选择
+     * @param activity
+     * @param themeResId
+     * @param tv
+     * @param calendar
+     */
+    public static void showTimePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+
+        new TimePickerDialog( activity,themeResId,
+                // 绑定监听器
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        tv.setText(hourOfDay + ":" + minute);
+                    }
+                }
+                // 设置初始时间
+                , calendar.get(Calendar.HOUR_OF_DAY)
+                , calendar.get(Calendar.MINUTE)
+                // true表示采用24小时制
+                ,true).show();
     }
 
 
@@ -148,6 +190,8 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
         String strContent = etContent.getText().toString().trim();
         String strType = tvChooseType.getText().toString().trim();
         String strCity = tvChooseCity.getText().toString().trim();
+        String strTime = tvChooseTime.getText().toString().trim();
+
         if (TextUtils.isEmpty(strContent)) {
             Toast.makeText(EditScheduleActivity.this, "日程内容不能为空", Toast.LENGTH_SHORT).show();
             return;
@@ -163,7 +207,7 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
             return;
         }
 
-        scheduleDao.updateScheduleData(new Bar_2_Item(id, strContent, StringUtils.listToString(mList1, ","), strType, strCity, strDate, String.valueOf(strDate)), id);
+        scheduleDao.updateScheduleData(new Bar_2_Item(id, strContent, StringUtils.listToString(mList1, ","), strType, strCity, strDate, strTime), id);
 
         finish();
     }

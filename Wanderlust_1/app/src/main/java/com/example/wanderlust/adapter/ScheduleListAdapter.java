@@ -24,7 +24,8 @@ public class ScheduleListAdapter extends BaseQuickAdapter<Bar_2_Item, BaseViewHo
                 //.setText(R.id.tv_date, item.getScheduleDate())
                 .setText(R.id.tv_date,StringUtils.getStringDate(item.getScheduleDate()))
                 .setText(R.id.tv_location, item.getScheduleLocation())
-                .setText(R.id.tv_type, item.getScheduleType());
+                .setText(R.id.tv_type, item.getScheduleType())
+                .setText(R.id.tv_time,item.getScheduleTime());
        // int value = StringUtils.compareDate(StringUtils.getCurrentTime(),  item.getScheduleDate());
         int value=StringUtils.compareDate(StringUtils.getCurrentTime(),StringUtils.getStringDate(item.getScheduleDate()));
         if (value == -1) {

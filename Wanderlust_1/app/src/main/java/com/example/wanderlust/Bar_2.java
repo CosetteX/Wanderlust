@@ -104,12 +104,14 @@ public class Bar_2 extends Fragment implements View.OnClickListener {
                     String strType = bar2Item.getScheduleType();
                     String strUlr = bar2Item.getScheduleImgUrl();
                     String strContent = bar2Item.getScheduleContent();
+                    String strTime=bar2Item.getScheduleTime();
                     startActivity(new Intent(getActivity(), ScheduleDetailActivity.class)
                             .putExtra("strDate", strDate)
                             .putExtra("strLocation", strLocation)
                             .putExtra("strType", strType)
                             .putExtra("strUlr", strUlr)
-                            .putExtra("strContent", strContent));
+                            .putExtra("strContent", strContent)
+                            .putExtra("strTime",strTime));
                 }
             }
         });
