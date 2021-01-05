@@ -169,7 +169,7 @@ public class BaseDialog {
         return dialog;
     }
 
-    public Dialog showWheelViewDialogTime(Activity activity, final List<WheelViewDataBean> OptionsItemsHH, final List<WheelViewDataBean> OptionsItemsMM) {
+    /*public Dialog showWheelViewDialogTime(Activity activity, final List<WheelViewDataBean> OptionsItemsHH, final List<WheelViewDataBean> OptionsItemsMM) {
         Dialog dialog = BaseDialog.showDialog(activity, R.layout.choose_wheelview_dialog_time);
 
         TextView tvCancel = dialog.findViewById(R.id.tv_cancel);
@@ -246,7 +246,7 @@ public class BaseDialog {
         });
         return dialog;
     }
-
+*/
     private static MyOnClickListener listener;
     public void setOnClickListener(MyOnClickListener onClickListener) {
         this.listener = onClickListener;

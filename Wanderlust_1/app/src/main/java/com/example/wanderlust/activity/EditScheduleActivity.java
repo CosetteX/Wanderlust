@@ -41,6 +41,7 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
     private TextView tvChooseType;
     private EditText etContent;
     private TextView tvChooseCity;
+    private TextView tvChooseTime;
 
     private List<WheelViewDataBean> wheelViewDataBeans = new ArrayList<>();
     private BaseDialog baseDialog;

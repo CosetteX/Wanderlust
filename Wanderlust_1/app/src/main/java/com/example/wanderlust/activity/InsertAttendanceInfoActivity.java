@@ -1,15 +1,19 @@
 package com.example.wanderlust.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.wanderlust.R;
@@ -42,7 +46,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 //添加日程页面
 public class InsertAttendanceInfoActivity extends FragmentActivity implements View.OnClickListener, IWheelViewSelectedListener, MyOnClickListener {
@@ -51,8 +57,8 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
     private ImagePickerAdapter imageGoodsAdapter;
     private List<String> mList1 = new ArrayList<>();
     private List<WheelViewDataBean> wheelViewDataBeans = new ArrayList<>();
-    private List<WheelViewDataBean> wheelViewDataBeansHH = new ArrayList<>();
-    private List<WheelViewDataBean> wheelViewDataBeansMM = new ArrayList<>();
+    //private List<WheelViewDataBean> wheelViewDataBeansHH = new ArrayList<>();
+    //private List<WheelViewDataBean> wheelViewDataBeansMM = new ArrayList<>();
     private BaseDialog baseDialog;
     private Dialog wheelViewDialog;
     private TextView tvChooseType;
@@ -60,6 +66,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
     private EditText etContent;
     private TextView tvChooseCity;
     //private CityPickerView mPicker = new CityPickerView();
+    Calendar calendar= Calendar.getInstance(Locale.CHINA);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +89,13 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         String location= LocationUtils.getInstance().getLocations(this);
         tvChooseCity.setText(location);
 
+        //获取当前时间
+        Time t=new Time();
+        t.setToNow();
+        int hour=t.hour;
+        int minute=t.minute;
+        String time=hour+":"+minute;
+        tvChooseTime.setText(time);
     }
 
     private void initView() {
@@ -98,11 +112,14 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         Button btnCommit = findViewById(R.id.btn_commit);
         btnCommit.setOnClickListener(this);
         etContent = findViewById(R.id.et_content);
+
+
         tvChooseCity = findViewById(R.id.tv_choose_city);
         tvChooseCity.setOnClickListener(this);
 
-        tvChooseTime = findViewById(R.id.tv_choose_time);
+        tvChooseTime=findViewById(R.id.tv_choose_time);
         tvChooseTime.setOnClickListener(this);
+
 
         imageGoodsAdapter.setOnItemClickListener(new ImagePickerAdapter.OnRecyclerViewItemClickListener() {
             @Override
@@ -194,9 +211,36 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
                 chooseCity();
                 break;
             case R.id.tv_choose_time:
-                showAttendanceTypeTime(wheelViewDataBeansHH,wheelViewDataBeansMM);
+                //选择城市
+                showTimePickerDialog(this,  4, tvChooseTime, calendar);
+               //showAttendanceTypeTime(wheelViewDataBeansHH,wheelViewDataBeansMM);
                 break;
         }
+    }
+
+
+    /**
+     * 时间选择
+     * @param activity
+     * @param themeResId
+     * @param tv
+     * @param calendar
+     */
+    public static void showTimePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+
+        new TimePickerDialog( activity,themeResId,
+                // 绑定监听器
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        tv.setText(hourOfDay + ":" + minute);
+                    }
+                }
+                // 设置初始时间
+                , calendar.get(Calendar.HOUR_OF_DAY)
+                , calendar.get(Calendar.MINUTE)
+                // true表示采用24小时制
+                ,true).show();
     }
 
     private void chooseCity() {
@@ -272,6 +316,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         finish();
     }
 
+
     private void initWheelViewData() {
         // Type
         WheelViewDataBean dataBean = new WheelViewDataBean();
@@ -290,7 +335,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         wheelViewDataBeans.add(dataBean3);
 
         // Time HH
-        for(int i=0;i<24;++i){
+      /*  for(int i=0;i<24;++i){
             WheelViewDataBean tmp = new WheelViewDataBean();
             if(i<10)
                 tmp.setName("0"+i);
@@ -310,6 +355,8 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             tmp.setId(i);
             wheelViewDataBeansMM.add(tmp);
         }
+
+       */
     }
 
     private void initWheelDialog() {
@@ -331,14 +378,14 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         }
     }
     /***
-     * 选择时间
+     * 选择时间 zang
      */
-    private void showAttendanceTypeTime(List<WheelViewDataBean> HHList, List<WheelViewDataBean> MMList) {
+  /*  private void showAttendanceTypeTime(List<WheelViewDataBean> HHList, List<WheelViewDataBean> MMList) {
         //选择批次
         if (baseDialog != null) {
             wheelViewDialog = baseDialog.showWheelViewDialogTime(this, HHList,MMList);
         }
-    }
+    }*/
 
     @Override
     public void onItemSelected(int position, List<?> list) {
@@ -355,8 +402,11 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
 
     @Override
     public void onConfirm(View view, String v) {
-
-        if(v.contains(":")){
+        WheelViewDataBean wheelViewDataBean = wheelViewDataBeans.get(Integer.valueOf(v));
+        if (wheelViewDataBean != null) {
+            String vName = wheelViewDataBean.getName();
+            tvChooseType.setText(vName);
+       /* if(v.contains(":")){
             WheelViewDataBean H = wheelViewDataBeansHH.get(Integer.valueOf(v.split(":")[0]));
             WheelViewDataBean M = wheelViewDataBeansMM.get(Integer.valueOf(v.split(":")[1]));
             if (H != null && M!= null) {
@@ -370,7 +420,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             if (wheelViewDataBean != null) {
                 String vName = wheelViewDataBean.getName();
                 tvChooseType.setText(vName);
-            }
+            }*/
         }
 
 

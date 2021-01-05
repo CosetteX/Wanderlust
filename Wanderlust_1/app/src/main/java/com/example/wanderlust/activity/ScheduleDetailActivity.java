@@ -30,6 +30,7 @@ public class ScheduleDetailActivity extends FragmentActivity {
         String strType = getIntent().getStringExtra("strType");
         String strUlr = getIntent().getStringExtra("strUlr");
         String strContent =getIntent().getStringExtra("strContent");
+        String strTime=getIntent().getStringExtra("strTime");
 
 
         TextView tvContent = findViewById(R.id.tv_content);
@@ -37,11 +38,14 @@ public class ScheduleDetailActivity extends FragmentActivity {
         TextView tvStatus = findViewById(R.id.tv_status);
         TextView tvCity = findViewById(R.id.tv_city);
         TextView tvType = findViewById(R.id.tv_type);
+        TextView tvTime=findViewById(R.id.tv_time);
 
         tvContent.setText(strContent);
         tvDate.setText(StringUtils.getStringDate(strDate));
         tvCity.setText(strLocation);
         tvType.setText(strType);
+        tvTime.setText(strTime);
+
         int value = StringUtils.compareDate(StringUtils.getCurrentTime(), StringUtils.getStringDate(strDate));
         if (value == -1) {
             //当前时间小于创建时间  过期了
