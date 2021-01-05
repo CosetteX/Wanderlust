@@ -169,6 +169,84 @@ public class BaseDialog {
         return dialog;
     }
 
+    public Dialog showWheelViewDialogTime(Activity activity, final List<WheelViewDataBean> OptionsItemsHH, final List<WheelViewDataBean> OptionsItemsMM) {
+        Dialog dialog = BaseDialog.showDialog(activity, R.layout.choose_wheelview_dialog_time);
+
+        TextView tvCancel = dialog.findViewById(R.id.tv_cancel);
+        TextView tvConfrim = dialog.findViewById(R.id.tv_confirm);
+        // HH
+        final WheelView wheelViewHH = dialog.findViewById(R.id.wheelviewHH);
+        wheelViewHH.setLineSpacingMultiplier(2);
+        wheelViewHH.setCyclic(false);
+        wheelViewHH.setAdapter(new WheelAdapter() {
+            @Override
+            public int getItemsCount() {
+                return OptionsItemsHH.size();
+            }
+
+            @Override
+            public Object getItem(int index) {
+                return OptionsItemsHH.get(index).getName();
+            }
+
+            @Override
+            public int indexOf(Object o) {
+                return OptionsItemsHH.indexOf(o);
+            }
+        });
+
+        wheelViewHH.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int index) {
+                iWheelViewSelectedListener.onItemSelected(index,OptionsItemsHH);
+            }
+        });
+
+        // MM
+        final WheelView wheelViewMM = dialog.findViewById(R.id.wheelviewMM);
+        wheelViewMM.setLineSpacingMultiplier(2);
+        wheelViewMM.setCyclic(false);
+        wheelViewMM.setAdapter(new WheelAdapter() {
+            @Override
+            public int getItemsCount() {
+                return OptionsItemsMM.size();
+            }
+
+            @Override
+            public Object getItem(int index) {
+                return OptionsItemsMM.get(index).getName();
+            }
+
+            @Override
+            public int indexOf(Object o) {
+                return OptionsItemsMM.indexOf(o);
+            }
+        });
+
+        wheelViewMM.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int index) {
+                iWheelViewSelectedListener.onItemSelected(index,OptionsItemsMM);
+            }
+        });
+
+
+        // Cancel and confirm
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onCancel(v);
+            }
+        });
+        tvConfrim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onConfirm(v, wheelViewHH.getCurrentItem()+":"+wheelViewMM.getCurrentItem());
+            }
+        });
+        return dialog;
+    }
+
     private static MyOnClickListener listener;
     public void setOnClickListener(MyOnClickListener onClickListener) {
         this.listener = onClickListener;

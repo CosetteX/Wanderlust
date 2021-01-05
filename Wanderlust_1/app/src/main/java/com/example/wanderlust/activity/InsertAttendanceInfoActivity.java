@@ -51,9 +51,12 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
     private ImagePickerAdapter imageGoodsAdapter;
     private List<String> mList1 = new ArrayList<>();
     private List<WheelViewDataBean> wheelViewDataBeans = new ArrayList<>();
+    private List<WheelViewDataBean> wheelViewDataBeansHH = new ArrayList<>();
+    private List<WheelViewDataBean> wheelViewDataBeansMM = new ArrayList<>();
     private BaseDialog baseDialog;
     private Dialog wheelViewDialog;
     private TextView tvChooseType;
+    private TextView tvChooseTime;
     private EditText etContent;
     private TextView tvChooseCity;
     //private CityPickerView mPicker = new CityPickerView();
@@ -97,6 +100,9 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         etContent = findViewById(R.id.et_content);
         tvChooseCity = findViewById(R.id.tv_choose_city);
         tvChooseCity.setOnClickListener(this);
+
+        tvChooseTime = findViewById(R.id.tv_choose_time);
+        tvChooseTime.setOnClickListener(this);
 
         imageGoodsAdapter.setOnItemClickListener(new ImagePickerAdapter.OnRecyclerViewItemClickListener() {
             @Override
@@ -187,6 +193,9 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
                 //选择城市
                 chooseCity();
                 break;
+            case R.id.tv_choose_time:
+                showAttendanceTypeTime(wheelViewDataBeansHH,wheelViewDataBeansMM);
+                break;
         }
     }
 
@@ -231,6 +240,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         String strContent = etContent.getText().toString().trim();
         String strType = tvChooseType.getText().toString().trim();
         String strCity = tvChooseCity.getText().toString().trim();
+        String strTime = tvChooseTime.getText().toString().trim();
         if (TextUtils.isEmpty(strContent)) {
             Toast.makeText(InsertAttendanceInfoActivity.this, "日程内容不能为空", Toast.LENGTH_SHORT).show();
             return;
@@ -246,14 +256,16 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             return;
         }
 
-      //  Bar_2_Item bar2Itemnew =
-      //         new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
-               // new Bar_2_Item(System.currentTimeMillis(),strContent, StringUtils.listToString(mList1,","),strType,strCity,currentDay,"21:21");
+        if (TextUtils.isEmpty(strTime)||"请选择".equals(strTime)) {
+            Toast.makeText(InsertAttendanceInfoActivity.this, "请选择时间", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Bar_2_Item bar2Itemnew = null;
         if(mList1.size()!=0)
-            bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
+            bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,StringUtils.listToString(mList1,","),strType,strCity,StringUtils.parse(currentDay).getTime(),strTime);
         else
-            bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,null,strType,strCity,StringUtils.parse(currentDay).getTime(),"21:00");
+            bar2Itemnew = new Bar_2_Item(System.currentTimeMillis(),strContent,null,strType,strCity,StringUtils.parse(currentDay).getTime(),strTime);
         ScheduleDao dao = new ScheduleDao(InsertAttendanceInfoActivity.this);
         dao.add(bar2Itemnew);
 
@@ -261,6 +273,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
     }
 
     private void initWheelViewData() {
+        // Type
         WheelViewDataBean dataBean = new WheelViewDataBean();
         dataBean.setName("工作");
         dataBean.setId(1);
@@ -275,8 +288,29 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
         wheelViewDataBeans.add(dataBean);
         wheelViewDataBeans.add(dataBean2);
         wheelViewDataBeans.add(dataBean3);
-    }
 
+        // Time HH
+        for(int i=0;i<24;++i){
+            WheelViewDataBean tmp = new WheelViewDataBean();
+            if(i<10)
+                tmp.setName("0"+i);
+            else
+                tmp.setName(""+i);
+            tmp.setId(i);
+            wheelViewDataBeansHH.add(tmp);
+        }
+
+        // Time MM
+        for(int i=0;i<60;++i){
+            WheelViewDataBean tmp = new WheelViewDataBean();
+            if(i<10)
+                tmp.setName("0"+i);
+            else
+                tmp.setName(""+i);
+            tmp.setId(i);
+            wheelViewDataBeansMM.add(tmp);
+        }
+    }
 
     private void initWheelDialog() {
         baseDialog = BaseDialog.getInstance();
@@ -296,6 +330,15 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
             wheelViewDialog = baseDialog.showWheelViewDialog(this, mList);
         }
     }
+    /***
+     * 选择时间
+     */
+    private void showAttendanceTypeTime(List<WheelViewDataBean> HHList, List<WheelViewDataBean> MMList) {
+        //选择批次
+        if (baseDialog != null) {
+            wheelViewDialog = baseDialog.showWheelViewDialogTime(this, HHList,MMList);
+        }
+    }
 
     @Override
     public void onItemSelected(int position, List<?> list) {
@@ -312,11 +355,25 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
 
     @Override
     public void onConfirm(View view, String v) {
-        WheelViewDataBean wheelViewDataBean = wheelViewDataBeans.get(Integer.valueOf(v));
-        if (wheelViewDataBean != null) {
-            String vName = wheelViewDataBean.getName();
-            tvChooseType.setText(vName);
+
+        if(v.contains(":")){
+            WheelViewDataBean H = wheelViewDataBeansHH.get(Integer.valueOf(v.split(":")[0]));
+            WheelViewDataBean M = wheelViewDataBeansMM.get(Integer.valueOf(v.split(":")[1]));
+            if (H != null && M!= null) {
+                String vTime = H.getName()+":"+M.getName();
+                tvChooseTime.setText(vTime);
+            }
+
         }
+        else{
+            WheelViewDataBean wheelViewDataBean = wheelViewDataBeans.get(Integer.valueOf(v));
+            if (wheelViewDataBean != null) {
+                String vName = wheelViewDataBean.getName();
+                tvChooseType.setText(vName);
+            }
+        }
+
+
         //确认按钮
         if (wheelViewDialog != null) {
             wheelViewDialog.dismiss();
