@@ -176,7 +176,14 @@ public class EditScheduleActivity extends FragmentActivity implements View.OnCli
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        tv.setText(hourOfDay + ":" + minute);
+                        if(minute<10){
+                            tv.setText(hourOfDay + ":0" + minute);
+                        }
+                        else{
+                            tv.setText(hourOfDay + ":" + minute);
+
+                        }
+
                     }
                 }
                 // 设置初始时间

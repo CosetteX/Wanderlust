@@ -57,8 +57,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
     private ImagePickerAdapter imageGoodsAdapter;
     private List<String> mList1 = new ArrayList<>();
     private List<WheelViewDataBean> wheelViewDataBeans = new ArrayList<>();
-    //private List<WheelViewDataBean> wheelViewDataBeansHH = new ArrayList<>();
-    //private List<WheelViewDataBean> wheelViewDataBeansMM = new ArrayList<>();
+
     private BaseDialog baseDialog;
     private Dialog wheelViewDialog;
     private TextView tvChooseType;
@@ -218,7 +217,7 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
                 chooseCity();
                 break;
             case R.id.tv_choose_time:
-                //选择城市
+                //选择时间
                 showTimePickerDialog(this,  4, tvChooseTime, calendar);
                //showAttendanceTypeTime(wheelViewDataBeansHH,wheelViewDataBeansMM);
                 break;
@@ -240,7 +239,12 @@ public class InsertAttendanceInfoActivity extends FragmentActivity implements Vi
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        tv.setText(hourOfDay + ":" + minute);
+                        if(minute<10){
+                            tv.setText(hourOfDay + ":0" + minute);
+                        }
+                       else{
+                            tv.setText(hourOfDay + ":" + minute);
+                        }
                     }
                 }
                 // 设置初始时间
